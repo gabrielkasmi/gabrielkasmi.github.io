@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+  <head>
+  	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-133810388-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-133810388-1');
+	</script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Software</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="title">Software</h1>
+        <!-- Add other header elements as needed -->
+        <ul>
+          <li><a href="index.html">Back to home</a></li>
+       </ul>
+      </header>
+      <section> 
+
+        <h2 id="DeepPVMapper">DeepPVMapper</h2>
+
+        DeepPVMapper is a deep learning-based mapping algorithm developped to map 
+        rooftop PV installations over France. 
+
+        <figure>
+            <img src="assets/flowchart-dpm.png" alt="DeepPVMapper" style="max-width: 80%; height: auto;">
+            <figcaption>Flowchart of DeepPVMapper. 
+        </figcaption>
+
+        Link to the <a href="https://github.com/gabrielkasmi/deeppvmapper">Github repository</a>. 
+        The supplementary material to replicate the baseline examples are 
+        provided in the associated repository, accessible here: 
+        <a href="https://doi.org/10.5281/zenodo.7576814"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.7576814.svg" alt="DOI"></a>
+
+        The list of publications associated to the paper are accessible here:
+        <ul>
+            <li>
+                Kasmi, G., Dubus, L., Blanc, P., & Saint-Drenan, Y. M. (2022). 
+                Towards unsupervised assessment with open-source data of the accuracy of 
+                deep learning-based distributed PV mapping. 
+                <a href="https://arxiv.org/abs/2207.07466">arXiv preprint arXiv:2207.07466.</a>
+            </li>
+        </ul>
+
+        <h2 id="PyPVRoof">PyPVRoof</h2>
+
+        <figure>
+            <img src="assets/flowchart-ppr.png" alt="PyPVRoof" style="max-width: 80%; height: auto;">
+            <figcaption>Flowchart of PyPVRoof. 
+        </figcaption>
+
+        Photovoltaic (PV) energy grows at an unprecedented pace, 
+        which makes it difficult to maintain up-to-date and accurate PV registries, 
+        which are critical for many applications such as PV power generation estimation. 
+        This lack of qualitative data is especially true in the case of rooftop PV installations. 
+        As a result, extensive efforts are put into the constitution of PV inventories. 
+        However, although valuable, these registries cannot be directly used for monitoring 
+        the deployment of PV or estimating the PV power generation, as these tasks usually 
+        require PV systems {\it characteristics}. To seamlessly extract these characteristics 
+        from the global inventories, PyPVRoof. PyPVRoof is a Python package to extract essential 
+        PV installation characteristics. These characteristics are tilt angle, azimuth, 
+        surface, localization, and installed capacity. PyPVRoof is designed to cover all use 
+        cases regarding data availability and user needs and is based on a benchmark of the 
+        best existing methods. Data for replicating our accuracy benchmarks are available 
+        on our Zenodo repository, <a href="https://doi.org/10.5281/zenodo.7586879"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.7586879.svg" alt="DOI"></a>
+        and the package code is 
+        accessible on our <a href="https://github.com/gabrielkasmi/pypvroof">Github repository</a>.
+
+        The supporting preprint is accessible here:
+        <ul>
+            <li>
+                Trémenbert, Y., Kasmi, G., Dubus, L., Saint-Drenan, Y. M., & Blanc, P. (2023). 
+                PyPVRoof: a Python package for extracting the characteristics of rooftop 
+                PV installations using remote sensing data. 
+                <a href="arXiv preprint arXiv:2309.07143.">arXiv preprint arXiv:2309.07143.</a>
+            </li>
+        </ul>
+
+
+      </section>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+  </body>
+</html>
