@@ -37,21 +37,33 @@
       </header>
       <section> 
 
-        <h2>Overview</h2>
+        <h2>Motivation and context</h2>
+
+        <h2>Scientific question and methodology</h2>
+
+        <h2>The three pilars of reliability</h2>
+
+        <h3>Monitoring: the downstream task accuracy</h3>
+        <h3>Auditing: the wavelet scale attribution method</h3>
 
         <figure>
-          <img src="assets/final.png" alt="DeepPVMapper" style="max-width: 80%; height: auto;">
-          <figcaption>Overview of the French départements mapped with DeepPVMapper (as of 04/2024).</figcaption>
-        </figure>
+            <img src="assets/explanation.png" alt="DeepPVMapper" style="max-width: 80%; height: auto;">
+            <figcaption>WCAM method: highlighting the important wavelet coefficients in a model's prediction. 
+              <a href="https://arxiv.org/abs/2305.14979">Source</a>.
+            </figcaption>
+          </figure>
+          
+        <h3>Robustness: building DeepPVMapper</h3>
 
-        <p>  My PhD thesis introduced a method for enhancing the 
-          reliability of deep learning algorithms aimed to be used 
-          in critical industrial processess. My case study was 
-          the improvement of the observability (i.e., ability of the TSO to accurately estimate) 
-          of rooftop photovoltaic (PV) power generation. 
-        </p>
+        <h2>Assessing the impact on rooftop PV observability</h2>
 
+        <figure>
+            <img src="assets/final.png" alt="DeepPVMapper" style="max-width: 80%; height: auto;">
+            <figcaption>Overview of the French départements mapped with DeepPVMapper (as of 04/2024).</figcaption>
+          </figure>
 
+        <h2>Conclusion</h2>
+        
         <p>Through this PhD, I made contributions in machine 
           learning and explainable AI, with the introduction of the wavelet 
           scale attribution method (WCAM) and new feature attribution method. 
@@ -60,43 +72,12 @@
           and the associated database, which is currently the world largest 
           with  this level of detail.
         </p>
-                
-        <figure>
-          <img src="assets/explanation.png" alt="DeepPVMapper" style="max-width: 80%; height: auto;">
-          <figcaption>WCAM method: highlighting the important wavelet coefficients in a model's prediction. 
-            <a href="https://arxiv.org/abs/2305.14979">Source</a>.
-          </figcaption>
-        </figure>
 
-        <h2>Abstract and manuscript</h2>
-        <p>
-          In November 2023, the French photovoltaic (PV) installed capacity stood at 18.6 GWp, 
-          and the French electricity transmission system operator (TSO) lacks power measurements 
-          for 20% of the fleet, which mostly correspond to small-scale (rooftop) systems. In 
-          the context of decarbonizing the electric mix, the PV installed capacity will continue 
-          to experience sustained growth in the coming years, and the so-called problem of poor PV 
-          observability threatens its long-term integration into the grid due to the uncertainty it 
-          creates. A better knowledge of the rooftop PV fleet, embodied in a nationwide technical 
-          registry recording the localization and characteristics of the PV installations, is necessary 
-          to improve PV observability. This thesis proposes to assess whether deep learning-based remote 
-          sensing on orthoimagery is a suitable method for constructing this technical registry. 
-          The thesis first discusses the quality standards the technical registry should satisfy and 
-          introduces an unsupervised evaluation method to monitor the accuracy of the registry in the 
-          absence of ground truth labels. Second, the thesis introduces a new feature attribution method 
-          that enables the auditing of the model's decisions by decomposing its predictions into the 
-          space-scale domain. The thesis discusses the relevance of this decomposition for assessing what 
-          the model sees on the input image, understanding the model's sensitivity to varying acquisition 
-          conditions, which are found to affect the model's accuracy and reliability, and introducing a 
-          robust and reliable algorithm for mapping rooftop PV installations. Finally, the relevance of 
-          the registry for improving rooftop PV observability is established by showing that accurate 
-          and scalable estimations of the rooftop PV power production can be derived from the registry 
-          and weather data. This thesis features contributions in power systems by showing how to 
-          effectively improve rooftop PV observability and in deep learning by improving the
-           interpretability of deep learning models thanks to a new feature attribution method. More 
-           generally, this thesis underlines the necessary conditions for using deep learning in 
-           critical industrial contexts.
-        </p>
-        <p>The manuscript will soon be accessible.</p>
+        <h2>References</h2>
+
+        <h2>Supporting materials</h2>
+
+        <p>The manuscript and the slides of the defense will soon be accessible.</p>
 
         <img src="assets/poster.jpeg" alt="Poster-these" style="max-width: 80%; height: auto;">
         
