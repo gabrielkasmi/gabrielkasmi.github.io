@@ -38,7 +38,102 @@
 
         <h2 id="Teaching">Teaching</h2>
 
-        <h2 id="Journals">Talks and popularization</h2>
+        <h4>Internships</h4>
+
+        <ul>
+          <li>
+            <strong>March-September 2022</strong>: End of study internship of Yann Trémenbert
+          </li>
+        </ul>
+
+        <p>
+          Photovoltaic (PV) energy grows at an unprecedented pace, which makes it difficult to 
+          maintain up-to-date and accurate PV registries, which are critical for many applications 
+          such as PV power generation estimation. This lack of qualitative data is especially true 
+          in the case of rooftop PV installations. As a result, extensive efforts are put into the 
+          constitution of PV inventories. However, although valuable, these registries cannot be 
+          directly used for monitoring the deployment of PV or estimating the PV power generation, 
+          as these tasks usually require PV systems {\it characteristics}. To seamlessly extract 
+          these characteristics from the global inventories, we introduce PyPVRoof. PyPVRoof is a 
+          Python package to extract essential PV installation characteristics. These characteristics 
+          are tilt angle, azimuth, surface, localization, and installed capacity. PyPVRoof is designed 
+          to cover all use cases regarding data availability and user needs and is based on a benchmark 
+          of the best existing methods. Data for replicating our accuracy benchmarks are available 
+          on our Zenodo repository
+          <a href="https://doi.org/10.5281/zenodo.7586879"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.7586879.svg" alt="DOI"></a>
+          , and the package code is accessible at this <a href="https://github.com/gabrielkasmi/pypvroof">URL</a>. 
+        </p>
+
+        <p>
+          The main tasks of the internship included an extensive literature review of the existing works in 
+          the field of extracting characteristics of PV systems, a benchmark of these methods and an implementation
+          of new methods (e.g. Theil-Sen regression). All methods were extensively compared both in terms of 
+          accuracy and in terms of computational cost on <a href="https://www.nature.com/articles/s41597-023-01951-4">BDAPPV</a>.
+          Yann put a particular emphasis on the environmental impact of his coding practices and 
+          the methods that he implemented. The idea to discuss the environmental impact of DeepPVMapper 
+          (appendix A of the thesis manuscript) was brought by him. This internship was co-supervised with L. Dubus.
+        </p>
+
+        <h4>Group projects</h4>
+
+        <ul>
+          <li>
+            <strong>October 2022-May 2023</strong>: Applied statistics projects at ENSAE
+          </li>
+        </ul>
+
+        <p>
+          About 20h of teaching load to a group of 2nd year students of engineering degree 
+          at ENSAE Paris ("<a href="https://www.ensae.fr/courses/1408-groupe-de-statistique-appliquee">groupe de statistiques appliquées</a>").
+
+          The project title was "Deep learning for detecting individual solar systems from aerial images". 
+          The students tasks were to carry out a short literature review, define the fundamental notions of machine learning and deep learning
+          (empirical risk minimization, perceptron, neural network, convolutional layers, CNN) and to 
+          implement a custom-made and a ready-to-use neural network for binary classification on <a href="https://www.nature.com/articles/s41597-023-01951-4">BDAPPV</a>.
+          The students leveraged PyTorch to train and evaluate the classification model. The project repository 
+          can be accessed <a href="https://github.com/gabrielkasmi/statapp-ensae">here</a>.
+        </p>
+
+        <ul>
+          <li>
+            <strong>February July 2023</strong>: Computer science project at Mines Paris
+          </li>
+        </ul>
+
+        <p>
+          About 20h of teaching load to a group of 1st year students of the engineering degree at Mines Paris 
+          ("<a href="https://catalogue.mines-paristech.fr/#cp=course&group=IC1A&course=ECUE22.3&mainTab=COURSEgeneralites">projet d'informatique</a>"). 
+
+          The students task was to implement a website to visualize the outputs of DeepPVMapper (in a similar fashion 
+          as <a href="https://waynehuu.github.io/solarMapper/">this website</a>). The main tasks were to implement an architecture with a client and a host
+          based on Flask, to implement spatial indexing and preprocessing of the raw data 
+          to minimize the loading times and to propose
+          some complementary statistics (e.g. the number of systems or the cumulated installed capacity per city). 
+          This project was co-supervised with R. Jolivet.
+        </p>
+
+
+        <h2 id="Talks">Talks and popularization</h2>
+
+        <ul>
+          <li>
+            Mapping rooftop PV installations with deep learning. Solar Winter School, March 2023, Sophia-Antipolis.
+          </li>
+          <li>
+            Mapping rooftop PV installations with deep learning. Geostat seminar, October 2023, Sophia-Antipolis.
+          </li>
+          <li>
+            Mapping rooftop PV installations with deep learning. MIG seminar, November 2023, Sophia-Antipolis.
+          </li>
+          <li>
+            Reliably mapping the rooftop photovoltaic installations in France to support the 
+            decarbonation of the electric grid. ML4Climate Meetup #2, December 2023, Paris, France
+          </li>
+          <li>
+            Reliably mapping the rooftop photovoltaic installations in France 
+            to support the decarbonation of the electric grid. PitchYourThesis, February 2024, Paris, France
+          </li>
+        </ul>
 
       </section>
     </div>
