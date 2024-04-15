@@ -147,7 +147,8 @@
         <figure>
           <img src="assets/ratio.png" alt="DTA" style="max-width: 100%; height: auto;">
           <figcaption>Comparison of the aggregated installed capacity estimated by the model and recorded in the RNI, and 
-            "normalized ratio" between the estimation and the reference. 
+            "normalized ratio" between the estimation and the reference. Each polygon is a city. The bluer, the stronger the underestimation
+            and the redder, the stronger the overestimation of the aggregated installed capacity by the mapping algorithm.
           </figcaption>
         </figure>
 
@@ -163,9 +164,29 @@
 
         <h3>Auditing: the wavelet scale attribution method</h3>
 
-        <a href="https://arxiv.org/abs/2305.14979">wavelet scale attribution method (WCAM)</a>
-        <a href="https://arxiv.org/abs/2309.12214">wavelet perturbation</a>
+        <p>
+          The aim of this part is to assess whether the model detects PV panels for correct reasons. By correct,
+        we mean that the model should detect PV panels by relying on relevant components on the image and not spurious
+        factors (e.g. rooftop or nearby objects such as pools). To carry out this assessment, we initially relied 
+        on a class of feature attribution method called the Gradient Class Activation Map (GradCAM, [12]). 
+        This method highlights the areas on the input image that contributed the most to a model's decision. 
+        </p>
 
+        <p>
+          The GradCAM was sufficient to reveal that the model does not rely on spurious factor and focuses where
+          PV panels are located. However, it failed to explain false positives and false negatives. A thourought 
+          analysis of these failure cases led us to suppose that they were caused by the fact that the model
+          relies on different <i>scales</i>, and that depending on whether patterns are present at different scales
+          false predictions can arise.
+        </p>
+
+        <p>
+          In other words, to better understand why false prediction arise, we need to assess what does the 
+          model see on the input image and not only where it looks, as traditional feature attribution methods do.
+          Towards this end, we introduced the <a href="https://arxiv.org/abs/2305.14979">wavelet scale attribution method (WCAM)</a>.
+        </p>
+
+        
         <figure>
             <img src="assets/explanation.png" alt="DeepPVMapper" style="max-width: 80%; height: auto;">
             <figcaption>WCAM method: highlighting the important wavelet coefficients in a model's prediction. 
@@ -176,7 +197,7 @@
         <h3>Robustness: building DeepPVMapper</h3>
 
         <a href="https://arxiv.org/abs/2309.07143">PyPVRoof</a>
-
+        <a href="https://arxiv.org/abs/2309.12214">wavelet perturbation</a>
 
 
         <h2 id="Observability">Assessing the impact on rooftop PV observability</h2>
@@ -256,6 +277,11 @@
                 Kasmi, G., Saint-Drenan, Y. M., Trebosc, D., Jolivet, R., Leloux, J., Sarr, B., & Dubus, L. (2023). 
                 A crowdsourced dataset of aerial images with annotated 
                 solar photovoltaic arrays and installation metadata. <i>Scientific Data 10</i>(1), 59.
+              </li>
+              <li>
+                Selvaraju, R. R., Cogswell, M., Das, A., Vedantam, R., Parikh, D., & Batra, D. (2017). 
+                Grad-cam: Visual explanations from deep networks via gradient-based localization. 
+                <i>In Proceedings of the IEEE international conference on computer vision </i>(pp. 618-626).
               </li>
           </ol>
         </p>
