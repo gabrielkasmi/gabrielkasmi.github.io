@@ -105,13 +105,13 @@
               This evaluation is at most indirect, as by definition there is not labelled data on this domain.
             </li>
             <li>
-              <strong>Auditing</strong>: we argue that it is necessary to gain intuition on how models work to be able 
+              <strong><a href="#pilar2">Auditing</a></strong>: we argue that it is necessary to gain intuition on how models work to be able 
               to understand when they might fail and what the practitioner can expect from them. To this end, we leverage explainable AI (XAI)
               techniques. These methods enable to understand how model works, e.g., by shedding light on the important areas
               on an image for making a prediction. 
             </li>
             <li>
-              <strong>Robustness</strong>: when deployed in production, the input data will be subject to some alterations. 
+              <strong><a href="#pilar3">Robustness</a></strong>: when deployed in production, the input data will be subject to some alterations. 
               While it seems hard to improve the robustness in general, we can at least identify the main source of variability 
               in the input data and improve the model's invariance to such alterations. 
             </li>
@@ -170,7 +170,13 @@
       </div>
       </details>
 
-        <h3>Auditing: the wavelet scale attribution method</h3>
+      <details>
+        <summary>
+          <span id="pilar2" style="font-size: 1.17em;">
+            Auditing: the wavelet scale attribution method
+          </span>
+      </summary>
+      <div>
 
         <p>
           The aim of this part is to assess whether the model detects PV panels for correct reasons. By correct,
@@ -202,11 +208,23 @@
             </figcaption>
           </figure>
 
-        <h3>Robustness: building DeepPVMapper</h3>
+          </div>
+          </details>
+
+          <details>
+            <summary>
+              <span id="pilar3" style="font-size: 1.17em;">
+                Robustness: building DeepPVMapper
+              </span>
+          </summary>
+          <div>
+    
 
         <a href="https://arxiv.org/abs/2309.07143">PyPVRoof</a>
         <a href="https://arxiv.org/abs/2309.12214">wavelet perturbation</a>
 
+        </div>
+        </details>
 
         <h2 id="Observability">Assessing the impact on rooftop PV observability</h2>
 
