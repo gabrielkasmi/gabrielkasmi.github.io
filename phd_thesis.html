@@ -70,7 +70,6 @@
           PV systems [1,2,3]. Among them, the DeepSolar project [4] was an important milestone as it was among the
           first work to construct a large-scale database of PV systems recording the surface and the localization of the systems.
         </p>
-
         
         <h2>Scientific question</h2>
 
@@ -102,7 +101,7 @@
           <ul>
             <li>
               <strong>Monitoring</strong>: as deep learning models can fail unpredictably, it is necessary to 
-              monitor their accuracy over they operational design domain [6], i.e., the data on which they are used in production.
+              monitor their accuracy over they operational design domain (ODD, [6]), i.e., the data on which they are used in production.
               This evaluation is at most indirect, as by definition there is not labelled data on this domain.
             </li>
             <li>
@@ -122,9 +121,41 @@
         <h3>Monitoring: the downstream task accuracy</h3>
 
         <p>
-          <a href="https://arxiv.org/abs/2207.07466">downstream task accuracy (DTA)</a>
+          With the monitoring, we aim at being able to keep track of the model's performance over its ODD.
+          In our case, we trained a model on a training dataset and we deploy it over <a href="https://geoservices.ign.fr/bdortho">IGN orthoimages</a> 
+          covering all France. Therefore, our ODD, which we call the mapping area is France. 
         </p>
+
+        <p>
+          The standard way of evaluating a model's accuracy is to compare its prediction against ground
+          truth labels. Over France, we do not have such ground truth labels so instead we have to rely on
+          the closest available data, which is the <a href="https://odre.opendatasoft.com/explore/dataset/registre-national-installation-production-stockage-electricite-agrege/information/?disjunctive.epci&disjunctive.departement&disjunctive.region&disjunctive.filiere&disjunctive.combustible&disjunctive.combustiblessecondaires&disjunctive.technologie&disjunctive.regime&disjunctive.gestionnaire"><i>Registre national d'installations</i> (RNI)</a>.
+          The RNI indicates for each city the total number of installations and the cumulated installed capacity. 
+        </p>
+
+        <p>
+          To monitor the accuracy of the registry with the RNI, we rely on unsupervised model evaluation methods [7].
+          These approaches consist in automatically comparing the outputs of the model with an external data source. 
+          In our case, we aggregate the detections of our detection model to obtain an estimation of the installed capacity 
+          and the number of installations. We then compare these estimations with the records of the RNI.
+          We called this method the <a href="https://arxiv.org/abs/2207.07466">downstream task accuracy (DTA)</a> 
+          as it enables to evaluate a model's accuracy according to metrics that are relevant for the downstream
+          or final users: for instance, we can compute the average error in the estimation of the aggregated installed capacity.
+        </p>
+
+        <p>
+          In [8], we leveraged the DTA to show that the performance of the model varies greatly during its deployment.
+            We were also able to quantify the performance drop encountered by rooftop PV mapping algorithms which was
+            highlighted by earlier works [9,10]. Deploying a model based on [3] and fine-tuned over France using the 
+            <a href="https://www.nature.com/articles/s41597-023-01951-4">BDAPPV dataset</a> [11], we documented
+            a 30 percentage point accuuracy drop when shifting from the training dataset to the mapping area. 
+            The main question that arises is to understand why such performance drop occurs.
+        </p>
+
         <h3>Auditing: the wavelet scale attribution method</h3>
+
+        <a href="https://arxiv.org/abs/2305.14979">wavelet scale attribution method (WCAM)</a>
+        <a href="https://arxiv.org/abs/2309.12214">wavelet perturbation</a>
 
         <figure>
             <img src="assets/explanation.png" alt="DeepPVMapper" style="max-width: 80%; height: auto;">
@@ -134,6 +165,10 @@
           </figure>
 
         <h3>Robustness: building DeepPVMapper</h3>
+
+        <a href="https://arxiv.org/abs/2309.07143">PyPVRoof</a>
+
+
 
         <h2 id="Observability">Assessing the impact on rooftop PV observability</h2>
 
@@ -183,6 +218,35 @@
               <li>
                 Boisnard, F., Boumazouza, R., Ducoffe, M., Fel, T., Glize, E., Hervier, L., ... & Vigouroux, D. (2023). 
                 Guidelines to explain machine learning algorithms.
+              </li>
+              <li>
+                Zhang, H., Fritts, J. E., & Goldman, S. A. (2008). 
+                Image segmentation evaluation: A survey of unsupervised methods. 
+                <i>Computer vision and image understanding, 110</i>(2), 260-280.
+              </li>
+              <li>
+                Kasmi, G., Dubus, L., Blanc, P., & Saint-Drenan, Y. M. (2022). 
+            Towards unsupervised assessment with open-source data of the accuracy of deep 
+            learning-based distributed PV mapping. <i>In MACLEAN: MAChine Learning for EArth 
+              ObservatioN Workshop co-located with the European Conference on Machine 
+              Learning and Principles and Practice of Knowledge Discovery in 
+              Databases (ECML/PKDD 2022)
+              </li>
+              <li>
+                De Jong, T., Bromuri, S., Chang, X., Debusschere, M., Rosenski, N., Schartner, C., ... 
+                & Curier, L. (2020). Monitoring spatial sustainable development: semi-automated analysis 
+                of satellite and aerial images for energy transition and sustainability indicators. 
+                <i>arXiv preprint arXiv:2009.05738.</i>
+              </li>
+              <li>
+                Malof, J. M., Li, B., Huang, B., Bradbury, K., & Stretslov, A. (2019). 
+                Mapping solar array location, size, and capacity using deep learning and overhead 
+                imagery. <i>Preprint at https://arxiv. org/abs/1902.10895.</i>
+              </li>
+              <li>
+                Kasmi, G., Saint-Drenan, Y. M., Trebosc, D., Jolivet, R., Leloux, J., Sarr, B., & Dubus, L. (2023). 
+                A crowdsourced dataset of aerial images with annotated 
+                solar photovoltaic arrays and installation metadata. <i>Scientific Data 10</i>(1), 59.
               </li>
           </ol>
         </p>
