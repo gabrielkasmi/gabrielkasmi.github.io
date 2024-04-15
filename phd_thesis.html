@@ -140,8 +140,17 @@
           and the number of installations. We then compare these estimations with the records of the RNI.
           We called this method the <a href="https://arxiv.org/abs/2207.07466">downstream task accuracy (DTA)</a> 
           as it enables to evaluate a model's accuracy according to metrics that are relevant for the downstream
-          or final users: for instance, we can compute the average error in the estimation of the aggregated installed capacity.
+          or final users: for instance, we can compute the average error in the estimation of the aggregated installed capacity,
+          and derive metrics indicating whether the model locally overestimates or underestimates the aggregated installed capacity.
         </p>
+
+        <figure>
+          <img src="assets/ratio.png" alt="DTA" style="max-width: 80%; height: auto;">
+          <figcaption>Comparison of the aggregated installed capacity estimated by the model and recorded in the RNI, and 
+            "normalized ratio" between the estimation and the reference. 
+          </figcaption>
+        </figure>
+
 
         <p>
           In [8], we leveraged the DTA to show that the performance of the model varies greatly during its deployment.
@@ -230,7 +239,7 @@
             learning-based distributed PV mapping. <i>In MACLEAN: MAChine Learning for EArth 
               ObservatioN Workshop co-located with the European Conference on Machine 
               Learning and Principles and Practice of Knowledge Discovery in 
-              Databases (ECML/PKDD 2022)
+              Databases (ECML/PKDD 2022)</i>
               </li>
               <li>
                 De Jong, T., Bromuri, S., Chang, X., Debusschere, M., Rosenski, N., Schartner, C., ... 
