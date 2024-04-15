@@ -31,19 +31,98 @@
         <img src="assets/poster.jpeg" alt="Gabriel Kasmi" class="picture" style="max-width: 80%; height: auto;" />
         <!-- Add other header elements as needed -->
         <ul>
+          <li><a href="#Motivation">Context</a></li>
+          <li><a href="#Pilars">Reliability pilars</a></li>
+          <li><a href="#Observability"></a>Improving observability</li>
+          <li><a href="#Conclusion"></a>Conclusion</li>
+
           <li><a href="research.html">Back to research</a></li>
           <li><a href="index.html">Back to home</a></li>
        </ul>
       </header>
       <section> 
 
-        <h2>Motivation and context</h2>
+        <h2 id="Motivation">Motivation and context</h2>
 
+        <p>
+          In the current organization of the electric system, the transmission system operator (TSO) 
+        is reponsible for the balance betwee the load and supply of electricity. It requires to have
+        access to real time measurements of the electric production. While for conventional electricity 
+        generation means, wind and hydro power, this does not pose any problem, photovoltaic (PV) energy
+        is characterized by a great diversity of systems, ranging from large plants, which are telemetered,
+        to small scale, distributed systems. These systems, generally located on rooftop and whose installed 
+        capacity is lower than 36 kWp, amount for 20% of the PV installed capacity and are poorly known by the TSO.
+        This poor knowledge regarding small scale PV systems not only concerns power measurements, but also
+        the knowledge regarding the actuall fleet of systems (localization, individual installed capacity, system characteristics).
+        </p>
+
+        <p>
+          The rapid growth of PV energy in the context of the energy transition will increase the share of PV energy
+          in the electric mix. To continue to ensure the stability of the grid, it will be necessary to increase
+          the rooftop PV observability, i.e., the ability of the TSO to estimate the rooftop PV power with good accuracy.
+          To this end, two steps are necessary: first increasing the knowledge of the rooftop PV fleet and second leveraging
+          this registry to estimate the rooftop PV power production.
+        </p>
+
+        <p>
+          In the recent years, numerous works leveraged deep learning and orthoimagery to to construct registries of small-scale
+          PV systems [,,]. Among them, the DeepSolar project [] was an important milestone as it was among the
+          first work to construct a large-scale database of PV systems recording the surface and the localization of the systems.
+        </p>
+
+        
         <h2>Scientific question and methodology</h2>
+
+        <p>
+          Unfortunately, we cannot straightforwarly apply DeepSolar to France as we need more information on the PV systems
+          than only the surface. As our goal is to estimate the PV power production, we need the installed capacity, tilt and azimuth
+          angles of the PV systems, which are the minimal necessary information to estimate the PV power production []. 
+        </p>
+
+        <p>
+          The fundamental limit to deep learning-based methods such as DeepSolar is their sensitivity to distribution shifts, 
+          which leads to an unpredictable loss in accuracy if we were to apply the algorithm straightfowardly to France.
+          This sensitivity to distribution shifts results in a lack of reliability of deep learning methods.
+        </p>
+
+        <p>
+          The central contribution of this work is therefore to introduce a framework intended to improve the 
+          reliability of deep learning algorithms intended to be used in critical industrial processes such as the 
+          remote sensing of rooftop PV systems. The scientific question addressed is the following: Is deep learning-based 
+          remote sensing on orthoimagery a suitable method for constructing a nationwide registry of rooftop photovoltaic (PV) 
+          installations intended to improve the observability of PV power production in France?
+        </p>
 
         <h2>The three pilars of reliability</h2>
 
+        <p>
+          The framework for improving the reliability of deep learning-based algorithms is based on the following 
+          three pilars:
+          <ul>
+            <li>
+              <strong>Monitoring</strong>: as deep learning models can fail unpredictably, it is necessary to 
+              monitor their accuracy over they operational design domain [], i.e., the data on which they are used in production.
+              This evaluation is at most indirect, as by definition there is not labelled data on this domain.
+            </li>
+            <li>
+              <strong>Auditing</strong>: we argue that it is necessary to gain intuition on how models work to be able 
+              to understand when they might fail and what the practitioner can expect from them. To this end, we leverage explainable AI (XAI)
+              techniques. These methods enable to understand how model works, e.g., by shedding light on the important areas
+              on an image for making a prediction. 
+            </li>
+            <li>
+              <strong>Robustness</strong>: when deployed in production, the input data will be subject to some alterations. 
+              While it seems hard to improve the robustness in general, we can at least identify the main source of variability 
+              in the input data and improve the model's invariance to such alterations. 
+            </li>
+          </ul>
+        </p>
+
         <h3>Monitoring: the downstream task accuracy</h3>
+
+        <p>
+          <a href="https://arxiv.org/abs/2207.07466">downstream task accuracy (DTA)</a>
+        </p>
         <h3>Auditing: the wavelet scale attribution method</h3>
 
         <figure>
@@ -55,14 +134,14 @@
 
         <h3>Robustness: building DeepPVMapper</h3>
 
-        <h2>Assessing the impact on rooftop PV observability</h2>
+        <h2 id="Observability">Assessing the impact on rooftop PV observability</h2>
 
         <figure>
             <img src="assets/final.png" alt="DeepPVMapper" style="max-width: 80%; height: auto;">
             <figcaption>Overview of the French départements mapped with DeepPVMapper (as of 04/2024).</figcaption>
           </figure>
 
-        <h2>Conclusion</h2>
+        <h2 id="Conclusion">Conclusion</h2>
         
         <p>Through this PhD, I made contributions in machine 
           learning and explainable AI, with the introduction of the wavelet 
