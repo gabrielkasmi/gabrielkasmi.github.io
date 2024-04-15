@@ -31,7 +31,7 @@
         <img src="assets/poster.jpeg" alt="Gabriel Kasmi" class="picture" style="max-width: 80%; height: auto;" />
         <!-- Add other header elements as needed -->
         <ul>
-          <li><a href="#Motivation">Context</a></li>
+          <li><a href="#Motivation">Introduction</a></li>
           <li><a href="#Pilars">Reliability pilars</a></li>
           <li><a href="#Observability">Improving observability</a></li>
           <li><a href="#Conclusion">Conclusion</a></li>
@@ -43,7 +43,9 @@
       </header>
       <section> 
 
-        <h2 id="Motivation">Motivation and context</h2>
+        <h2 id="Motivation">Introduction</h2>
+
+        <h3>Motivation and context</h3>
 
         <p>
           In the current organization of the electric system, the transmission system operator (TSO) 
@@ -71,7 +73,7 @@
           first work to construct a large-scale database of PV systems recording the surface and the localization of the systems.
         </p>
         
-        <h2>Scientific question</h2>
+        <h3>Scientific question</h3>
 
         <p>
           Unfortunately, we cannot straightforwarly apply DeepSolar to France as we need more information on the PV systems
@@ -200,14 +202,49 @@
           Towards this end, we introduced the <a href="https://arxiv.org/abs/2305.14979">wavelet scale attribution method (WCAM)</a>.
         </p>
 
+        <p>
+          The WCAM builds on the sensitivity analysis method of [13]. This method consists in sampling random perturbation masks. 
+          In the original method, these masks are applied to the input image. The sensitivity of the model to the masks' perturbation 
+          is then recorded through the variation in the predicted probability. If the occluded area are not important for the prediction,
+          the variation of the predicted probability is small, and if the variation is high, then it means that the occluded area was important.
+          Importance is evaluated using Sobol's sensitivity analysis. 
+        </p>
+
+        <p>
+          To highlight the important <i>scales</i>, we perturb the dyadic wavelet transform of the image instead of the image itself.
+          The dyadic wavelet decomposition [14] consists in decomposing an image into different scales. As the wavelet transform
+          is invertible, we can reconstruct a perturbed image from its perturbed wavelet transform. The model is evaluated on the 
+          perturbed image, but this time we can traceback the importance of the perturbations in the wavelet domain instead 
+          of the image domain.
+        </p>
+
+        <figure>
+          <img src="assets/wcam-flowchart.png" alt="WCAM-flowchart" style="max-width: 80%; height: auto;">
+          <figcaption>Illustration of a perturbation in the wavelet domain. 
+            <a href="https://arxiv.org/abs/2305.14979">Source</a>.
+          </figcaption>
+        </figure>
         
+        <p>
+          The outcome of our approach is a heatmap in the wavelet domain. This representation highlights the important
+          scales in the model's prediction. An interesting feature for the application to PV panel classification,
+          the WCAM revealed that for a single spatial location (highlighted in standard feature attribution methods)
+          the model relies on different scales. These scales correspond to structural elements such as details within 
+          the PV modules or the gridded pattern.
+        </p>
+
         <figure>
             <img src="assets/explanation.png" alt="DeepPVMapper" style="max-width: 80%; height: auto;">
             <figcaption>WCAM method: highlighting the important wavelet coefficients in a model's prediction. 
               <a href="https://arxiv.org/abs/2305.14979">Source</a>.
             </figcaption>
           </figure>
-
+          <p>
+            We used the WCAM to carry out analyses for explaining the false predictions. We highlighted the fact that
+            false positives tend to arise when gridded pattern appear on the input image. On the other hand, in [15] we 
+            studied how the acquisition conditions disrupted some frequency ranges (which corresponded to scales) and could 
+            lead to false negatives. 
+          </p>
           </div>
           </details>
 
@@ -218,10 +255,29 @@
               </span>
           </summary>
           <div>
+
+            <p>
+              The analysis of the model's decision with the WCAM showed that the classification model
+              relies on different scales. While dealing with the false positives is difficult, we can 
+              at least focus on the false negatives. In [15], we showed that the varying acquisition conditions
+              contributed significantly in altering the model's performance during its real-life deployment.
+            </p>
+
+            <p>
+              To improve the robustness of the model to variying acquisition conditions, we introduced 
+              a new data augmentation technique, the <a href="https://arxiv.org/abs/2309.12214">wavelet perturbation</a>. 
+              This method consists in altering the wavelet transform of the image to force the model to
+              rely on a wide range of scales. Our aim is that if a scale is disrupted by the acquisition conditions, 
+              the model has learned to rely on other, less perturbed scales to make its prediction.
+            </p>
+
+            <p>
+              
+            </p>
     
 
         <a href="https://arxiv.org/abs/2309.07143">PyPVRoof</a>
-        <a href="https://arxiv.org/abs/2309.12214">wavelet perturbation</a>
+        
 
         </div>
         </details>
@@ -308,6 +364,22 @@
                 Selvaraju, R. R., Cogswell, M., Das, A., Vedantam, R., Parikh, D., & Batra, D. (2017). 
                 Grad-cam: Visual explanations from deep networks via gradient-based localization. 
                 <i>In Proceedings of the IEEE international conference on computer vision </i>(pp. 618-626).
+              </li>
+              <li>
+                Fel, T., Cadène, R., Chalvidal, M., Cord, M., Vigouroux, D., & Serre, T. (2021). 
+                Look at the variance! efficient black-box explanations with sobol-based sensitivity analysis. 
+                <i>Advances in neural information processing systems, 34, </i>26005-26014.
+              </li>
+              <li>
+                Mallat, S. G. (1989). A theory for multiresolution signal decomposition: 
+                the wavelet representation. 
+                <i>IEEE transactions on pattern analysis and machine intelligence, 11</i>(7), 674-693.
+              </li>
+              <li>
+                Kasmi, G., Dubus, L., Saint-Drenan, Y. M., & Blanc, P. (2023). 
+            Can We Reliably Improve the Robustness to Image Acquisition of Remote 
+            Sensing of PV Systems?. <i>In Tackling Climate Change with Machine Learning 
+              workshop at NeurIPS 2023</i>.
               </li>
           </ol>
         </p>
