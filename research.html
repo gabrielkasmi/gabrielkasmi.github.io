@@ -49,13 +49,53 @@
         <h3>Explainability and wavelet transform</h3>
 
         <p>
+          My first topic of interest is to improve our understanding of deep learning models. In computer vision, 
+          current methods focus on assessing where model focus on input images. However, these approaches
+          are uninformative when it comes to explain why classification models can fail to correctly predict 
+          some instances.
+        </p>
 
+        <p>
+          My research consists in using tools from classical signal processins theory, in particular the wavelet
+          transform, to meaningfully decompose the input image and then to identify the important parts of this 
+          decomposition into the model's prediction. I prefer using the wavelet transform over the Fourier transform
+          as the wavelet decomposition of an image is localized in space and in frequency, which on images 
+          enables to assess where and what (scales) models see. 
+        </p>
+
+        <p>
+          During the PhD thesis, we introduced the <a href="https://openreview.net/forum?id=112o4j4VCY">wavelet scale attribution method (WCAM)</a>, 
+          an extension of <a href="https://openreview.net/forum?id=hA-PHQGOjqQ">Fel's et. al.</a> attribution method
+          to the wavelet domain in order to assess what models see on an image. Scales of the wavelet transform correspond to 
+          structural components of the image: therefore, we can assess whether the model relies on shapes, textures or other 
+          intermediary components to make its prediction. 
+        </p>
+
+        <p>
+          I believe that the the WCAM can be expanded into several interesting directions:
+          <ul>
+            <li>
+              First, it can be expanded to 1D signals such as sounds,
+            </li>
+            <li>
+              Second, I believe that there can be interesting connections between the scale decomposition 
+              obtained with the WCAM and recent concept-based XAI approaches such as <a href="https://arxiv.org/abs/2211.10154">CRAFT</a>.   
+            </li>
+            <li>
+              Finally, the scales of the wavelet transform are localized in frequency, and several works (see for instance this 
+              <a href="https://openreview.net/forum?id=rQ1cNbi07Vq">work</a> or 
+              this <a href="https://openaccess.thecvf.com/content/ICCV2021/html/Chen_Amplitude-Phase_Recombination_Rethinking_Robustness_of_Convolutional_Neural_Networks_in_Frequency_ICCV_2021_paper.html">one</a>) leveraged
+              frequency-based methods to characterize and analyze the robustness of models to various input perturbations. 
+            </li>
+          </ul>
+
+          Feel free to reach me if you are interested for collaborating!
         </p>
 
         <h3>Improving the observability of rooftop PV systems</h3>
 
         <p>
-          
+
         </p>
 
         <h2 id="Publications">List of publications</h2>
@@ -154,7 +194,6 @@
             <a href="https://arxiv.org/abs/2309.07143">Link</a>.
           </li>
         </ul>
-
 
         <h3>Posters</h3>
 
