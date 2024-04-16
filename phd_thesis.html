@@ -155,8 +155,8 @@
 
         <figure>
           <img src="assets/ratio.png" alt="DTA" style="max-width: 100%; height: auto;">
-          <figcaption>Comparison of the aggregated installed capacity estimated by the model and recorded in the RNI, and 
-            "normalized ratio" between the estimation and the reference. Each polygon is a city. The bluer, the stronger the underestimation
+          <figcaption>Comparison of the aggregated installed capacity estimated by the model ("Registry") and recorded in the RNI, and 
+            "(normalized) ratio" between the estimation and the reference. Each polygon is a city. The bluer, the stronger the underestimation
             and the redder, the stronger the overestimation of the aggregated installed capacity by the mapping algorithm.
           </figcaption>
         </figure>
@@ -311,7 +311,11 @@
         <h2 id="Observability">Assessing the impact on rooftop PV observability</h2>
 
         <p>
-          
+          We deployed DeepPVMapper over France to detect rooftop PV systems. As of April 2024, we deployed DeepPVMapper
+          over 38 départements (covering nearly 175000 km2) and record the tilt and azimuth angles of the systems, as well
+          as their installed capacity, surface and pointwise localization. The area covered by DeepPVMapper is currently the world's second 
+          largest after DeepSolar [4] (who mapped rooftop PV systems over the continental United States) and the largest
+          with this level of detail: [3] covered Northrine-Wesphalia (35 000 km2) with a similar level of details.
         </p>
 
         <figure>
@@ -319,9 +323,74 @@
             <figcaption>Overview of the French départements mapped with DeepPVMapper (as of 04/2024).</figcaption>
           </figure>
 
-        <h2 id="Conclusion">Conclusion</h2>
-      
+          <p>
+            The registry enables us to address the first prerequisite to improve rooftop PV observability: 
+            improving the knowledge regarding the PV fleet. The second prerequisite is to be able to <i>accurately</i> estimate the PV 
+            power production of these systems. This is done in two steps. First, we use a conversion model (PVWatts, [24]), that 
+            takes as input the PV system's characteristics and solar irradiance data (coming from the Copernicus Atmospheric
+            monitoring services (CAMS,[25])). The model outputs a load factor expressed in Wh/Wc. 
+            Second, we compare the estimation of the PV power production with ground truth PV yield time series. These time series
+            come from BDPV. After data curation, we have about 900 records of PV power yields, covering all France.
+          </p>
 
+          <figure>
+            <img src="assets/pv-yield.png" alt="BDPV" style="max-width: 80%; height: auto;">
+            <figcaption>Examples of PV power curves</figcaption>
+          </figure>
+
+          <p>
+            We feed the conversion model with the PV system's parameters coming from DeepPVMapper. We compare this parameterization
+            with the best possible parameterization, i.e., with ground truth parameters on the PV systems coming from BDPV. 
+            The estimation error is about 10% with a conversion model parameterized with DeepPVMapper and 8% with the Oracle. 
+            These results show that we need relatively few informations on the rooftop PV systems to derive fairly accurate 
+            estimations of their PV power production and that using a parameterization obtained with deep learning-based methods is 
+            a suitable approach as the resulting estimation of the PV power production is competitive with the first best.
+          </p>
+
+          <p>
+            Our approach consists in estimating the rooftop PV power production for each system. In practice, we have about a million 
+            systems to consider. Therefore, we need to consider the scalability of our approach. In particular, we need to ensure that 
+            there are no systematic biases in the estimation of the systems characteristics that could lead to an overall estimation error 
+            larger than the individual estimation error. We compared the behavior of the PV power estimation error of the oracle and with DeepPVMapper.
+            The behavior of the error is the same for both parameterizations, indicating no evidence of potential biases 
+            in the estimation of the systems parameters with DeepPVMapper.
+          </p>
+
+
+        <h2 id="Conclusion">Conclusion</h2>
+
+        <p>
+          The scientific question was whether deep learning-based remote sensing on orthoimagery 
+          could be a suitable method for constructing a nationwide registry of rooftop photovoltaic 
+          (PV) installations intended to improve the observability of PV power production in France. 
+          More broadly, it raises the question of whether deep learning models are mature e
+          nough to be safely used in industrial pipelines. This work's central contribution is 
+          identifying quality and dependability standards and proposing a methodology to verify 
+          that the deep learning model and the generated data meet these standards. 
+          The necessary conditions are the ability to monitor the model's data and to audit 
+          its decision process. Therefore, it is necessary to have complementary data and to 
+          define relevant KPIs against which the data produced by the deep learning model 
+          will be monitored. Standard feature attribution techniques are insufficient for 
+          auditing the model's decision as they do not assess what models see. 
+          Our WCAM provides a first step towards addressing this issue. Finally, 
+          having a robust and accurate model is desirable but insufficient to achieve 
+          the required level of trust in the data and the decision process, as user's trust 
+          comes from his or her ability to monitor the data and audit the model. 
+          Therefore, deep learning and Earth observation data are suitable because 
+          one has enough additional data to monitor the model during its deployment. 
+        </p>
+
+        <p>
+          This work contributes to improving PV observability to the extent that it 
+          provides valuable additional information regarding the geographical distribution 
+          of small-scale PV systems. It also enables an accurate estimation of PV power 
+          production, but its relevance in an operational setting is questionable, as 
+          the model-based method does not significantly outperform alternative methods. 
+          Nonetheless, our assessment of the gains for improving rooftop PV observability 
+          can be complemented by collecting more reference data to empirically demonstrate 
+          our approach's greater accuracy compared to the TSO's current practices.
+        </p>
+      
         <h2 id="Contributions">Contributions</h2>
 
         <p>Through this PhD, I made contributions in machine 
@@ -331,6 +400,10 @@
           of a new algorithm for mapping rooftop PV systems (DeepPVMapper) 
           and the associated database, which is currently the world largest 
           with  this level of detail.
+        </p>
+
+        <p>
+          The following table summarizes the contributions made during this thesis:
         </p>
 
         <h2>References</h2>
@@ -456,6 +529,16 @@
                 Rausch, B., Mayer, K., Arlt, M. L., Gust, G., Staudt, P., Weinhardt, C., ... & Rajagopal, R. (2020). 
                 An enriched automated PV registry: Combining image recognition and 3D building data. 
                 <i>arXiv preprint arXiv:2012.03690.</i>
+              </li>
+              <li>
+                Dobos, A. P. (2014). PVWatts version 5 manual (No. NREL/TP-6A20-62641). 
+                National Renewable Energy Lab.(NREL), 
+                Golden, CO (United States).
+              </li>
+              <li>
+                Qu, Z., Oumbe, A., Blanc, P., Espinar, B., Gesell, G., Gschwind, B., ... & Wald, L. (2017). 
+                Fast radiative transfer parameterisation for assessing the surface solar irradiance: 
+                The Heliosat-4 method.<i> Meteorologische Zeitschrift, 26</i>(1), 33-57.
               </li>
           </ol>
         </p>
