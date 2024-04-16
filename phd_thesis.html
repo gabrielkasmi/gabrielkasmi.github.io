@@ -272,14 +272,47 @@
             </p>
 
             <p>
-              <a href="https://arxiv.org/abs/2309.07143">PyPVRoof</a>
+              We compared our wavelet perturbation with other popular data augmentation methods aiming 
+              at improving the robustness of the model to image corruptions. We evaluated our method against 
+              AugMix [16], RandAugment [17] and AutoAugment [18] and achieved state-of-the-art results. Our benchmark
+              dataset is BDAPPV [11]: we train a ResNet [19] model on Google images and evaluate its accuracy on 
+              IGN images depicting the same PV panel. This benchmark is a natural case study for varying acquisition
+              conditions.
             </p>
-    
+
+            <figure>
+              <img src="assets/acquisition-conditions.png" alt="AC" style="max-width: 80%; height: auto;">
+              <figcaption>Examples of images from BDAPPV [11] depicting the same PV panel from two different providers.</figcaption>
+            </figure>
+
+            <p>
+              In addition to the robustness to varying acquisition conditions, we introduced <a href="https://arxiv.org/abs/2309.07143">PyPVRoof</a> [20], 
+              a Python package for extracting the characteristics of rooftop PV systems. The motivation for introducing
+              this package was that existing works lacked standardization: each method had its data requirements 
+              and the various method introduced, such as in [21,22,23] couldn't be compared. Our aim was to systematically
+              compare existing approaches and to design a set of method that could be used in different cases in terms
+              of data availability. Practitioners can use PyPVRoof to extract the tilt and azimuth angles, surface, installed capacity and localization of
+              rooftop PV systems even if they have no other data than a geolocalized polygon, if they have 3D LiDAR data or
+              access to limited information on PV systems.
+            </p>
+
+            <p>
+              The last step towards building DeepPVMapper was to provide a comprehensive benchmark of classification and segmentation models,
+              evaluate the gains brought by the two-step approach introduced by DeepSolar and bring several improvements
+              to the pipeline to minimize false detections and speed-up the computations. DeepPVMapper improves
+              over existing works by being more robust to varying acquisition conditions, less prone to false detections
+              and more flexible than previous works to extract the characteristics of PV systems as it accomodates for 
+              different cases of complementary data availability (e.g., 3D LiDAR data).
+            </p>
 
         </div>
         </details>
 
         <h2 id="Observability">Assessing the impact on rooftop PV observability</h2>
+
+        <p>
+          
+        </p>
 
         <figure>
             <img src="assets/final.png" alt="DeepPVMapper" style="max-width: 80%; height: auto;">
@@ -380,6 +413,49 @@
             Can We Reliably Improve the Robustness to Image Acquisition of Remote 
             Sensing of PV Systems?. <i>In Tackling Climate Change with Machine Learning 
               workshop at NeurIPS 2023</i>.
+              </li>
+              <li>
+                Hendrycks, D., Mu, N., Cubuk, E. D., Zoph, B., Gilmer, J., & Lakshminarayanan, B. (2019). 
+                Augmix: A simple data processing method to improve robustness and uncertainty. 
+                <i>arXiv preprint arXiv:1912.02781</i>.
+              </li>
+              <li>
+                Cubuk, E. D., Zoph, B., Shlens, J., & Le, Q. V. (2020). 
+                Randaugment: Practical automated data augmentation with a reduced search space. 
+                <i>In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition workshops</i> (pp. 702-703).
+              </li>
+              <li>
+                Cubuk, E. D., Zoph, B., Mane, D., Vasudevan, V., & Le, Q. V. (2018). 
+                Autoaugment: Learning augmentation policies from data. 
+                <i>arXiv preprint arXiv:1805.09501</i>.
+              </li>
+              <li>
+                He, K., Zhang, X., Ren, S., & Sun, J. (2016). 
+                Deep residual learning for image recognition. 
+                <i>In Proceedings of the IEEE conference on computer vision and pattern recognition</i> (pp. 770-778).
+              </li>
+              <li>
+                Trémenbert, Y., Kasmi, G., Dubus, L., Saint-Drenan, Y. M., & Blanc, P. (2023). 
+                PyPVRoof: a Python package for extracting the characteristics of rooftop PV installations 
+                using remote sensing data. <i>arXiv preprint arXiv:2309.07143</i>.
+              </li>
+              <li>
+                Edun, A. S., Perry, K., Harley, J. B., & Deline, C. (2021). 
+                Unsupervised azimuth estimation of solar arrays in low-resolution satellite 
+                imagery through semantic segmentation and Hough transform. 
+                <i>Applied Energy, 298,</i> 117273.
+              </li>
+              <li>
+                So, B., Nezin, C., Kaimal, V., Keene, S., Collins, L., Bradbury, K., & Malof, J. M. 
+                (2017). Estimating the electricity generation capacity of solar photovoltaic arrays 
+                using only color aerial imagery. 
+                <i>In 2017 IEEE International Geoscience and Remote Sensing Symposium (IGARSS)</i> 
+                (pp. 1603-1606). IEEE.
+              </li>
+              <li>
+                Rausch, B., Mayer, K., Arlt, M. L., Gust, G., Staudt, P., Weinhardt, C., ... & Rajagopal, R. (2020). 
+                An enriched automated PV registry: Combining image recognition and 3D building data. 
+                <i>arXiv preprint arXiv:2012.03690.</i>
               </li>
           </ol>
         </p>
