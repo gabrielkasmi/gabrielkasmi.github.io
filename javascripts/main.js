@@ -133,10 +133,15 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Keyboard navigation support
     document.addEventListener('keydown', function(e) {
-        // Escape key to close mobile menu
-        if (e.key === 'Escape' && nav && nav.classList.contains('mobile-open')) {
-            nav.classList.remove('mobile-open');
-            mobileMenuToggle.classList.remove('active');
+        // Escape key to close mobile menu and dropdowns
+        if (e.key === 'Escape') {
+            if (nav && nav.classList.contains('mobile-open')) {
+                nav.classList.remove('mobile-open');
+                mobileMenuToggle.classList.remove('active');
+            }
+            dropdowns.forEach(dropdown => {
+                dropdown.classList.remove('active');
+            });
         }
         
         // Home key to scroll to top
@@ -193,30 +198,32 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Console welcome message
-    console.log('%c👋 Welcome to Gabriel Kasmi\'s website!', 'color: #667eea; font-size: 16px; font-weight: bold;');
-    console.log('%cBuilt with modern web technologies for the best user experience.', 'color: #764ba2; font-size: 12px;');
-    
-    // Mobile dropdown functionality
+    // Dropdown functionality for all devices
     const dropdowns = document.querySelectorAll('.nav-dropdown');
+    console.log('Found dropdowns:', dropdowns.length);
     
     dropdowns.forEach(dropdown => {
         const dropdownLink = dropdown.querySelector('a');
+        console.log('Setting up dropdown for:', dropdownLink.textContent);
         
         dropdownLink.addEventListener('click', function(e) {
-            if (window.innerWidth <= 768) {
-                e.preventDefault();
-                dropdown.classList.toggle('active');
-                
-                // Close other dropdowns
-                dropdowns.forEach(otherDropdown => {
-                    if (otherDropdown !== dropdown) {
-                        otherDropdown.classList.remove('active');
-                    }
-                });
-            }
+            console.log('Dropdown clicked:', this.textContent);
+            e.preventDefault();
+            dropdown.classList.toggle('active');
+            console.log('Dropdown active:', dropdown.classList.contains('active'));
+            
+            // Close other dropdowns
+            dropdowns.forEach(otherDropdown => {
+                if (otherDropdown !== dropdown) {
+                    otherDropdown.classList.remove('active');
+                }
+            });
         });
     });
+    
+    // Console welcome message
+    console.log('%c👋 Welcome to Gabriel Kasmi\'s website!', 'color: #667eea; font-size: 16px; font-weight: bold;');
+    console.log('%cBuilt with modern web technologies for the best user experience.', 'color: #764ba2; font-size: 12px;');
     
     // Close dropdowns when clicking outside
     document.addEventListener('click', function(e) {
@@ -226,6 +233,8 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     });
+    
+
     
     // Tab switching logic for Welcome/Bienvenue
     window.switchTab = function(tabGroup, lang) {
