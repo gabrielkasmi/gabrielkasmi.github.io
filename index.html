@@ -58,46 +58,53 @@
       </header>
       <section>
       
-        <h2 id="Welcome">Welcome</h2>
-
-        <p>
-          I'm a postdoctoral researcher at Mines Paris - PSL.
-          I prepared my PhD thesis at <a href="https://www.minesparis.psl.eu/">Mines Paris</a> 
-          (<a href="https://www.oie.minesparis.psl.eu/Accueil/">OIE Center</a>) under the supervision of Philippe Blanc, 
-          Yves-Marie Saint-Drenan and Laurent Dubus. 
-          This PhD was funded by <a href="https://www.rte-france.com/">RTE France</a>, 
-          the French transmission system operator (TSO), and 
-          benefited from the support of the <a href="https://www.anrt.asso.fr/fr/accueil-anrt">ANRT</a>
-           (CIFRE funding). Click <a href="phd_thesis.html">here</a> for an overview of the work done in the PhD.
-        </p>
-        <p>
-          My research focuses on the reliability and transparency of deep learning algorithms deployed in industrial settings. 
-          My research interests are explainable AI, computer vision and remote sensing. My main case study 
-          is the remote sensing of rooftop photovoltaic installations, so I also made contribution in power systems.
-        </p>
-        
-
-        <h2 id="Bienvenue">Bienvenue</h2>
-
-        <p>
-          Je suis chercheur postdoctoral à Mines Paris - PSL.
-          J’ai préparé ma thèse de doctorat à <a href="https://www.minesparis.psl.eu/">Mines Paris</a> 
-          (<a href="https://www.oie.minesparis.psl.eu/Accueil/">Centre O.I.E.</a>) sous la direction de Philippe Blanc, 
-          Yves-Marie Saint-Drenan et Laurent Dubus. 
-          Cette thèse a été financée par <a href="https://www.rte-france.com/">RTE France</a>, 
-          le gestionnaire du réseau de transport d’électricité en France (TSO), et 
-          a bénéficié du soutien de l’<a href="https://www.anrt.asso.fr/fr/accueil-anrt">ANRT</a> 
-          (financement CIFRE). Cliquez <a href="phd_thesis.html">ici</a> pour un aperçu des travaux réalisés dans le cadre de cette thèse.
-        </p>
-        <p>
-          Mes recherches portent sur la fiabilité et la transparence des algorithmes 
-          de deep learning déployés dans l'industrie. 
-          Mes thèmes de recherche sont l’IA explicable, la vision par ordinateur 
-          et la télédétection. Mon principal cas d’étude est la télédétection des 
-          installations photovoltaïques sur toiture, ce qui m’a également conduit 
-          à contribuer au domaine des systèmes énergétiques.
-        </p>
-        
+        <div class="tabs">
+          <div class="tab-buttons">
+            <button class="tab-button active" onclick="switchTab('welcome', 'english')">Welcome</button>
+            <button class="tab-button" onclick="switchTab('welcome', 'french')">Bienvenue</button>
+          </div>
+          
+          <div id="welcome-english" class="tab-content active">
+            <h2 id="Welcome">Welcome</h2>
+            <p>
+              I'm a postdoctoral researcher at Mines Paris - PSL.
+              I prepared my PhD thesis at <a href="https://www.minesparis.psl.eu/">Mines Paris</a> 
+              (<a href="https://www.oie.minesparis.psl.eu/Accueil/">OIE Center</a>) under the supervision of Philippe Blanc, 
+              Yves-Marie Saint-Drenan and Laurent Dubus. 
+              This PhD was funded by <a href="https://www.rte-france.com/">RTE France</a>, 
+              the French transmission system operator (TSO), and 
+              benefited from the support of the <a href="https://www.anrt.asso.fr/fr/accueil-anrt">ANRT</a>
+               (CIFRE funding). Click <a href="phd_thesis.html">here</a> for an overview of the work done in the PhD.
+            </p>
+            <p>
+              My research focuses on the reliability and transparency of deep learning algorithms deployed in industrial settings. 
+              My research interests are explainable AI, computer vision and remote sensing. My main case study 
+              is the remote sensing of rooftop photovoltaic installations, so I also made contribution in power systems.
+            </p>
+          </div>
+          
+          <div id="welcome-french" class="tab-content">
+            <h2 id="Bienvenue">Bienvenue</h2>
+            <p>
+              Je suis chercheur postdoctoral à Mines Paris - PSL.
+              J'ai préparé ma thèse de doctorat à <a href="https://www.minesparis.psl.eu/">Mines Paris</a> 
+              (<a href="https://www.oie.minesparis.psl.eu/Accueil/">Centre O.I.E.</a>) sous la direction de Philippe Blanc, 
+              Yves-Marie Saint-Drenan et Laurent Dubus. 
+              Cette thèse a été financée par <a href="https://www.rte-france.com/">RTE France</a>, 
+              le gestionnaire du réseau de transport d'électricité en France (TSO), et 
+              a bénéficié du soutien de l'<a href="https://www.anrt.asso.fr/fr/accueil-anrt">ANRT</a> 
+              (financement CIFRE). Cliquez <a href="phd_thesis.html">ici</a> pour un aperçu des travaux réalisés dans le cadre de cette thèse.
+            </p>
+            <p>
+              Mes recherches portent sur la fiabilité et la transparence des algorithmes 
+              de deep learning déployés dans l'industrie. 
+              Mes thèmes de recherche sont l'IA explicable, la vision par ordinateur 
+              et la télédétection. Mon principal cas d'étude est la télédétection des 
+              installations photovoltaïques sur toiture, ce qui m'a également conduit 
+              à contribuer au domaine des systèmes énergétiques.
+            </p>
+          </div>
+        </div>
 
         <h2 id="News">News</h2>
 

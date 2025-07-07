@@ -196,4 +196,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // Console welcome message
     console.log('%c👋 Welcome to Gabriel Kasmi\'s website!', 'color: #667eea; font-size: 16px; font-weight: bold;');
     console.log('%cBuilt with modern web technologies for the best user experience.', 'color: #764ba2; font-size: 12px;');
+    
+    // Tab switching logic for Welcome/Bienvenue
+    window.switchTab = function(tabGroup, lang) {
+        const tabButtons = document.querySelectorAll('.tab-buttons .tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+        document.querySelector(`.tab-button[onclick*="${lang}"]`).classList.add('active');
+        document.getElementById(`${tabGroup}-${lang}`).classList.add('active');
+    };
 }); 

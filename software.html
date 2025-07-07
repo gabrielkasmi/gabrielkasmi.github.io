@@ -67,7 +67,10 @@
           DeepPVMapper is a deep learning-based mapping algorithm developed to map 
           rooftop PV installations over France. 
         </p>
-        
+        <p>
+          <a href="https://github.com/gabrielkasmi/deeppvmapper">GitHub repository</a> &nbsp;|&nbsp;
+          <a href="https://gabrielkasmi.github.io/deeppvmapper">Project website</a>
+        </p>
         <figure>
             <img src="assets/flowchart-dpm.png" alt="DeepPVMapper" style="max-width: 80%; height: auto;">
             <figcaption>Flowchart of DeepPVMapper. 
@@ -93,6 +96,15 @@
         </ul>  
         </p>
 
+        <h2 id="WAM">Wavelet Attribution Method (WAM)</h2>
+        <p>
+          Feature attribution methods aim to improve the transparency of deep neural networks by identifying the input features that influence a model's decision. Pixel-based heatmaps have become the standard for attributing features to high-dimensional inputs, such as images, audio representations, and volumes. While intuitive and convenient, these pixel-based attributions fail to capture the underlying structure of the data. Moreover, the choice of domain for computing attributions has often been overlooked. This work demonstrates that the wavelet domain allows for informative and meaningful attributions. It handles any input dimension and offers a unified approach to feature attribution. Our method, the Wavelet Attribution Method (WAM), leverages the spatial and scale-localized properties of wavelet coefficients to provide explanations that capture both the where and what of a model's decision-making process. We show that WAM quantitatively matches or outperforms existing gradient-based methods across multiple modalities, including audio, images, and volumes. Additionally, we discuss how WAM bridges attribution with broader aspects of model robustness and transparency.
+        </p>
+        <p>
+          <a href="https://github.com/gabrielkasmi/wam">GitHub repository</a> &nbsp;|&nbsp;
+          <a href="https://gabrielkasmi.github.io/wam">Project website</a>
+        </p>
+
         <h2 id="PyPVRoof">PyPVRoof</h2>
         <p>
           PyPVRoof is a Python package to extract essential PV installation characteristics. 
@@ -105,6 +117,7 @@
           It can be used with or without additional data (3D LiDAR data, additional registry). 
           The package is designed to be used with Python 3.7 or higher.
         </p>
+        <p>
           The current version is available on PyPI: <a href="https://pypi.org/project/pypvroof/">https://pypi.org/project/pypvroof/</a>.
         </p>
 
@@ -122,7 +135,7 @@
           As a result, extensive efforts are put into the constitution of PV inventories. 
           However, although valuable, these registries cannot be directly used for monitoring 
           the deployment of PV or estimating the PV power generation, as these tasks usually 
-          require PV systems {\it characteristics}. To seamlessly extract these characteristics 
+          require PV systems characteristics. To seamlessly extract these characteristics 
           from the global inventories, PyPVRoof. PyPVRoof is a Python package to extract essential 
           PV installation characteristics. These characteristics are tilt angle, azimuth, 
           surface, localization, and installed capacity. PyPVRoof is designed to cover all use 
