@@ -220,24 +220,30 @@ document.addEventListener('DOMContentLoaded', function() {
         const dropdownLink = dropdown.querySelector('a');
         console.log('Setting up dropdown for:', dropdownLink.textContent);
         
-        // Use both click and mousedown for better cross-browser compatibility
+        // Handle dropdown toggle
         const handleDropdownToggle = function(e) {
             console.log('Dropdown clicked:', this.textContent);
             e.preventDefault();
             e.stopPropagation();
-            dropdown.classList.toggle('active');
-            console.log('Dropdown active:', dropdown.classList.contains('active'));
+            e.stopImmediatePropagation();
             
-            // Close other dropdowns
+            const wasActive = dropdown.classList.contains('active');
+            
+            // Close all dropdowns first
             dropdowns.forEach(otherDropdown => {
-                if (otherDropdown !== dropdown) {
-                    otherDropdown.classList.remove('active');
-                }
+                otherDropdown.classList.remove('active');
             });
+            
+            // Toggle this dropdown
+            if (!wasActive) {
+                dropdown.classList.add('active');
+                console.log('Dropdown activated');
+            } else {
+                console.log('Dropdown deactivated');
+            }
         };
         
         dropdownLink.addEventListener('click', handleDropdownToggle);
-        dropdownLink.addEventListener('mousedown', handleDropdownToggle);
     });
     
     // Console welcome message
@@ -246,14 +252,22 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Close dropdowns when clicking outside
     document.addEventListener('click', function(e) {
+        // Don't close if the click was on the dropdown link itself
+        if (e.target.closest && e.target.closest('.nav-dropdown a')) {
+            return; // Let the dropdown toggle handler deal with it
+        }
+        
         // Fallback for browsers that don't support closest()
         const isInsideDropdown = e.target.closest ? e.target.closest('.nav-dropdown') : 
             (e.target.parentElement && e.target.parentElement.closest('.nav-dropdown'));
             
         if (!isInsideDropdown) {
-            dropdowns.forEach(dropdown => {
-                dropdown.classList.remove('active');
-            });
+            // Small delay to prevent interference with dropdown toggle
+            setTimeout(() => {
+                dropdowns.forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
+            }, 10);
         }
     });
     
