@@ -600,13 +600,14 @@ button:focus {
 }
 
 .nav-dropdown.active .nav-dropdown-content {
-  display: block;
-  opacity: 1;
-  visibility: visible;
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
   -webkit-transform: translateY(0);
   -moz-transform: translateY(0);
   -ms-transform: translateY(0);
   transform: translateY(0);
+  border: 2px solid red !important; /* Debug border */
 }
 
 .nav-dropdown-content a {

@@ -2,6 +2,23 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     
+    // Dropdown functionality for all devices - declare early
+    const dropdowns = document.querySelectorAll('.nav-dropdown');
+    console.log('Found dropdowns:', dropdowns.length);
+    
+    // Debug: Check if dropdowns exist
+    if (dropdowns.length === 0) {
+        console.warn('No dropdowns found! Check HTML structure.');
+    } else {
+        dropdowns.forEach((dropdown, index) => {
+            console.log(`Dropdown ${index}:`, dropdown);
+            const link = dropdown.querySelector('a');
+            const content = dropdown.querySelector('.nav-dropdown-content');
+            console.log(`  Link:`, link?.textContent);
+            console.log(`  Content exists:`, !!content);
+        });
+    }
+    
     // Back to top button functionality
     const backToTopButton = document.querySelector('.back-to-top');
     
@@ -198,10 +215,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Dropdown functionality for all devices
-    const dropdowns = document.querySelectorAll('.nav-dropdown');
-    console.log('Found dropdowns:', dropdowns.length);
-    
+    // Set up dropdown functionality
     dropdowns.forEach(dropdown => {
         const dropdownLink = dropdown.querySelector('a');
         console.log('Setting up dropdown for:', dropdownLink.textContent);
@@ -253,5 +267,16 @@ document.addEventListener('DOMContentLoaded', function() {
         tabContents.forEach(content => content.classList.remove('active'));
         document.querySelector(`.tab-button[onclick*="${lang}"]`).classList.add('active');
         document.getElementById(`${tabGroup}-${lang}`).classList.add('active');
+    };
+    
+    // Debug function to test dropdown manually
+    window.testDropdown = function() {
+        const dropdown = document.querySelector('.nav-dropdown');
+        if (dropdown) {
+            dropdown.classList.toggle('active');
+            console.log('Dropdown toggled manually. Active:', dropdown.classList.contains('active'));
+        } else {
+            console.error('No dropdown found!');
+        }
     };
 }); 
