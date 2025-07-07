@@ -44,11 +44,18 @@
         <nav>
           <ul>
              <li><a href="index.html">Home</a></li>
-             <li><a href="research.html" class="active">Research</a></li>
-             <li><a href="software.html">Software</a></li>
-             <li><a href="teaching.html">Teaching & Popularization</a></li>
-             <li><a href="phd_thesis.html">PhD Thesis</a></li>
-             <li><a href="misc.html">Miscellaneous</a></li>
+             <li class="nav-dropdown">
+               <a href="research.html" class="active">Research</a>
+               <div class="nav-dropdown-content">
+                 <a href="research.html#Current">Current Research</a>
+                 <a href="research.html#Publications">Selected Publications</a>
+                 <a href="research.html#FullPublications">Full Publication Record</a>
+                 <a href="phd_thesis.html">PhD Thesis</a>
+                 <a href="teaching.html">Teaching & Popularization</a>
+                 <a href="misc.html">Miscellaneous</a>
+               </div>
+             </li>
+             <li><a href="software.html">Projects</a></li>
           </ul>
         </nav>
       
@@ -58,9 +65,9 @@
       </header>
       <section> 
 
-        <h2 id="Current">Current research</h2>
+        <h2 id="Current">Current Research</h2>
 
-        <h3>Explainability and signal processing</h3>
+        <h3>Explainability and Signal Processing</h3>
 
         <p>
           My first topic of interest is to improve our understanding of deep learning models. In computer vision, 
@@ -86,7 +93,7 @@
         </p>
 
         <p>
-          I believe that the the WCAM can be expanded into several interesting directions:
+          I believe that the WCAM can be expanded into several interesting directions:
           <ul>
             <li>
               First, it can be expanded to 1D signals such as sounds,
@@ -106,7 +113,7 @@
           Feel free to reach me if you are interested in collaborating!
         </p>
 
-        <h3>Improving the observability of rooftop PV systems</h3>
+        <h3>Improving the Observability of Rooftop PV Systems</h3>
 
         <p>
           The photovoltaic (PV) installed capacity grows very quickly, both worldwide and in France. 
@@ -134,7 +141,35 @@
         <!-- Back to top button -->
         <button class="back-to-top" title="Back to top">↑</button>
         
-        <h2 id="Publications">List of publications</h2>
+        <h2 id="Publications">Selected Publications</h2>
+
+        <p>Here are some of my key publications. For a complete list, see the <a href="#FullPublications">Full Publication Record</a> below.</p>
+
+        <h3>Key Publications</h3>
+
+        <ul>
+          <li>
+            <strong>Kasmi, G., Brunetto, A., Fel, T., Parekh, J. (2025).</strong> 
+            One Wave To Explain Them All: A Unifying Perspective On Feature Attribution. 
+            <i>Forty-second International Conference on Machine Learning (ICML)</i>.
+            <a href="https://arxiv.org/abs/2410.01482">Link</a>.
+          </li>
+          <li>
+            <strong>Kasmi, G.; Dubus, L; Saint-Drenan, Y.-M.; Blanc, P. (2025)</strong>
+            Space-scale exploration of the poor reliability of deep learning models: the case 
+            of the remote sensing of rooftop photovoltaic systems.
+            <i>Environmental Data Science 4</i>(e22).
+            <a href="https://doi.org/10.1017/eds.2025.13">Link</a>.
+          </li>
+          <li>
+            <strong>Kasmi, G.; Touron, A.; Blanc, P.; Saint-Drenan, Y.-M.; Fortin, M.; Dubus, L. (2024)</strong>
+            Remote-Sensing-Based Estimation of Rooftop Photovoltaic Power Production Using Physical Conversion Models and Weather Data.
+            <i>Energies 17</i>(17), 4353.
+            <a href="https://doi.org/10.3390/en17174353">Link</a>.
+          </li>
+        </ul>
+
+        <h2 id="FullPublications">Full Publication Record</h2>
 
         <h3>Publications in peer-reviewed journals</h3>
 
@@ -270,6 +305,13 @@
         </ul>
 
         <h3>Oral presentations</h3>
+
+        <!--add ICEM 2024, Journée du PV SIRTA
+        update the site
+        add the workshop AIA ICML
+        
+        --->
+
 
         <ul>
           <li>

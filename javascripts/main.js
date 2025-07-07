@@ -197,6 +197,36 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('%c👋 Welcome to Gabriel Kasmi\'s website!', 'color: #667eea; font-size: 16px; font-weight: bold;');
     console.log('%cBuilt with modern web technologies for the best user experience.', 'color: #764ba2; font-size: 12px;');
     
+    // Mobile dropdown functionality
+    const dropdowns = document.querySelectorAll('.nav-dropdown');
+    
+    dropdowns.forEach(dropdown => {
+        const dropdownLink = dropdown.querySelector('a');
+        
+        dropdownLink.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                dropdown.classList.toggle('active');
+                
+                // Close other dropdowns
+                dropdowns.forEach(otherDropdown => {
+                    if (otherDropdown !== dropdown) {
+                        otherDropdown.classList.remove('active');
+                    }
+                });
+            }
+        });
+    });
+    
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.nav-dropdown')) {
+            dropdowns.forEach(dropdown => {
+                dropdown.classList.remove('active');
+            });
+        }
+    });
+    
     // Tab switching logic for Welcome/Bienvenue
     window.switchTab = function(tabGroup, lang) {
         const tabButtons = document.querySelectorAll('.tab-buttons .tab-button');
