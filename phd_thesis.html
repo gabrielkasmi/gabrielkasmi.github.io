@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
   	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-133810388-1"></script>
@@ -13,12 +13,14 @@
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PhD thesis of Gabriel Kasmi - Improving the reliability of deep learning algorithms for remote sensing of rooftop photovoltaic systems.">
     <title>PhD thesis | Gabriel Kasmi</title>
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
-    <meta name="viewport" content="width=device-width">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍🔬</text></svg>">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -27,37 +29,51 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1 class="title">PhD thesis</h1>
-        <img src="assets/poster.jpeg" alt="Gabriel Kasmi" class="picture" style="max-width: 80%; height: auto;" />
-        <!-- Add other header elements as needed -->
-        <ul>
-          <li><a href="#Motivation">Introduction</a></li>
-          <li><a href="#Pilars">Reliability pilars</a></li>
-          <li><a href="#Observability">Improving observability</a></li>
-          <li><a href="#Conclusion">Conclusion</a></li>
-          <li><a href="#Contributions">Contributions</a></li>
-          <li><a href="#Material">Manuscript and slides</a></li>
-
-          <li><a href="research.html">Back to research</a></li>
-          <li><a href="index.html">Back to home</a></li>
-       </ul>
+        <h1 class="title">PhD Thesis</h1>
+        <img src="assets/poster.jpeg" alt="Gabriel Kasmi" class="picture" loading="lazy" />
+        <p class="icons-center">
+           <a href="https://scholar.google.com/citations?user=Rt14jucAAAAJ&hl=fr" title="Google Scholar"><i class="ai ai-google-scholar ai-2x"></i></a>
+           <a href="https://arxiv.org/search/?searchtype=author&query=Kasmi%2C+G" title="arXiv"><i class="ai ai-arxiv ai-2x"></i></a>
+           <a href="https://twitter.com/gabriel_kasmi" title="Twitter"><i class="fab fa-twitter"></i></a><br/><br />
+           <a href="https://www.linkedin.com/in/gabriel-kasmi/" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+           <a href="https://github.com/gabrielkasmi" title="GitHub"><i class="fab fa-github"></i></a>
+           <a href="https://orcid.org/0000-0002-7774-4302" title="ORCID"><i class="ai ai-orcid ai-2x"></i></a> 
+        </p>
+        
+        <nav>
+          <ul>
+             <li><a href="index.html">Home</a></li>
+             <li><a href="research.html">Research</a></li>
+             <li><a href="software.html">Software</a></li>
+             <li><a href="teaching.html">Teaching & Popularization</a></li>
+             <li><a href="phd_thesis.html" class="active">PhD Thesis</a></li>
+             <li><a href="misc.html">Miscellaneous</a></li>
+          </ul>
+        </nav>
+      
+        <div class="copyright-container">
+          <p><small>© Gabriel Kasmi &nbsp;/&nbsp; Last update: 05/2025</small></p>
+        </div>
       </header>
       <section> 
 
+        <!-- Back to top button -->
+        <button class="back-to-top" title="Back to top">↑</button>
+        
         <h2 id="Motivation">Introduction</h2>
 
         <h3>Motivation and context</h3>
 
         <p>
           In the current organization of the electric system, the transmission system operator (TSO) 
-        is reponsible for the balance betwee the load and supply of electricity. It requires to have
+        is responsible for the balance between the load and supply of electricity. It requires to have
         access to real time measurements of the electric production. While for conventional electricity 
         generation means, wind and hydro power, this does not pose any problem, photovoltaic (PV) energy
         is characterized by a great diversity of systems, ranging from large plants, which are telemetered,
         to small scale, distributed systems. These systems, generally located on rooftop and whose installed 
         capacity is lower than 36 kWp, amount for 20% of the PV installed capacity and are poorly known by the TSO.
         This poor knowledge regarding small scale PV systems not only concerns power measurements, but also
-        the knowledge regarding the actuall fleet of systems (localization, individual installed capacity, system characteristics).
+        the knowledge regarding the actual fleet of systems (localization, individual installed capacity, system characteristics).
         </p>
 
         <p>
@@ -69,22 +85,22 @@
         </p>
 
         <p>
-          In the recent years, numerous works leveraged deep learning and orthoimagery to to construct registries of small-scale
+          In recent years, numerous works leveraged deep learning and orthoimagery to construct registries of small-scale
           PV systems [1,2,3]. Among them, the DeepSolar project [4] was an important milestone as it was among the
-          first work to construct a large-scale database of PV systems recording the surface and the localization of the systems.
+          first works to construct a large-scale database of PV systems recording the surface and the localization of the systems.
         </p>
         
         <h3>Scientific question</h3>
 
         <p>
-          Unfortunately, we cannot straightforwarly apply DeepSolar to France as we need more information on the PV systems
+          Unfortunately, we cannot straightforwardly apply DeepSolar to France as we need more information on the PV systems
           than only the surface. As our goal is to estimate the PV power production, we need the installed capacity, tilt and azimuth
           angles of the PV systems, which are the minimal necessary information to estimate the PV power production [5]. 
         </p>
 
         <p>
           The fundamental limit to deep learning-based methods such as DeepSolar is their sensitivity to distribution shifts, 
-          which leads to an unpredictable loss in accuracy if we were to apply the algorithm straightfowardly to France.
+          which leads to an unpredictable loss in accuracy if we were to apply the algorithm straightforwardly to France.
           This sensitivity to distribution shifts results in a lack of reliability of deep learning methods.
         </p>
 
@@ -96,11 +112,11 @@
           installations intended to improve the observability of PV power production in France?
         </p>
 
-        <h2 id="Pilars">The three pilars of reliability</h2>
+        <h2 id="Pilars">The three pillars of reliability</h2>
 
         <p>
           The framework for improving the reliability of deep learning-based algorithms is based on the following 
-          three pilars:
+          three pillars:
           <ul>
             <li>
               <strong><a href="#pilar1">Monitoring</a></strong>: as deep learning models can fail unpredictably, it is necessary to 
@@ -613,5 +629,6 @@
       </section>
     </div>
     <script src="javascripts/scale.fix.js"></script>
+    <script src="javascripts/main.js"></script>
   </body>
 </html>
