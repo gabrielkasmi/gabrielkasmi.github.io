@@ -206,9 +206,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const dropdownLink = dropdown.querySelector('a');
         console.log('Setting up dropdown for:', dropdownLink.textContent);
         
-        dropdownLink.addEventListener('click', function(e) {
+        // Use both click and mousedown for better cross-browser compatibility
+        const handleDropdownToggle = function(e) {
             console.log('Dropdown clicked:', this.textContent);
             e.preventDefault();
+            e.stopPropagation();
             dropdown.classList.toggle('active');
             console.log('Dropdown active:', dropdown.classList.contains('active'));
             
@@ -218,7 +220,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     otherDropdown.classList.remove('active');
                 }
             });
-        });
+        };
+        
+        dropdownLink.addEventListener('click', handleDropdownToggle);
+        dropdownLink.addEventListener('mousedown', handleDropdownToggle);
     });
     
     // Console welcome message
@@ -227,7 +232,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Close dropdowns when clicking outside
     document.addEventListener('click', function(e) {
-        if (!e.target.closest('.nav-dropdown')) {
+        // Fallback for browsers that don't support closest()
+        const isInsideDropdown = e.target.closest ? e.target.closest('.nav-dropdown') : 
+            (e.target.parentElement && e.target.parentElement.closest('.nav-dropdown'));
+            
+        if (!isInsideDropdown) {
             dropdowns.forEach(dropdown => {
                 dropdown.classList.remove('active');
             });

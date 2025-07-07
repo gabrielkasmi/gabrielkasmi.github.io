@@ -430,8 +430,11 @@ img {
   }
   
   .nav-dropdown.active > a::after {
-    transform: rotate(180deg);
-  }
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
   
   section {
     padding: 1rem;
@@ -560,6 +563,7 @@ button:focus {
 /* Dropdown Navigation */
 .nav-dropdown {
   position: relative;
+  display: block;
 }
 
 .nav-dropdown-content {
@@ -567,21 +571,41 @@ button:focus {
   position: absolute;
   left: 0;
   top: 100%;
-  background: rgba(44, 62, 80, 0.95);
+  background: rgba(44, 62, 80, 0.98);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   min-width: 200px;
+  width: 100%;
   border-radius: 8px;
   box-shadow: 0 8px 25px rgba(0,0,0,0.3);
   z-index: 1000;
   padding: 0.5rem 0;
   opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translateY(-10px);
+  -moz-transform: translateY(-10px);
+  -ms-transform: translateY(-10px);
   transform: translateY(-10px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  -webkit-transition: opacity 0.3s ease, -webkit-transform 0.3s ease, visibility 0.3s ease;
+  -moz-transition: opacity 0.3s ease, -moz-transform 0.3s ease, visibility 0.3s ease;
+  -ms-transition: opacity 0.3s ease, -ms-transform 0.3s ease, visibility 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+/* Fallback for browsers that don't support backdrop-filter */
+@supports not (backdrop-filter: blur(10px)) {
+  .nav-dropdown-content {
+    background: rgba(44, 62, 80, 0.98);
+  }
 }
 
 .nav-dropdown.active .nav-dropdown-content {
   display: block;
   opacity: 1;
+  visibility: visible;
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
   transform: translateY(0);
 }
 
@@ -604,9 +628,15 @@ button:focus {
   content: '▼';
   margin-left: 0.5rem;
   font-size: 0.8rem;
+  -webkit-transition: -webkit-transform 0.3s ease;
+  -moz-transition: -moz-transform 0.3s ease;
+  -ms-transition: -ms-transform 0.3s ease;
   transition: transform 0.3s ease;
 }
 
-.nav-dropdown.active > a::after {
-  transform: rotate(180deg);
-}
+  .nav-dropdown.active > a::after {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
