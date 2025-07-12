@@ -261,6 +261,11 @@ img {
   color: white;
 }
 
+.copyright-container p,
+.copyright-container small {
+  color: white !important;
+}
+
 /* Back to top button */
 .back-to-top {
   position: fixed;
