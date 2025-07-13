@@ -612,7 +612,6 @@ button:focus {
   -moz-transform: translateY(0);
   -ms-transform: translateY(0);
   transform: translateY(0);
-  border: 2px solid red !important; /* Debug border */
 }
 
 .nav-dropdown-content a {

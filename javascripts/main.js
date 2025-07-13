@@ -293,4 +293,20 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('No dropdown found!');
         }
     };
+    
+    // Centralized last update date management
+    function updateLastUpdateDate() {
+        // Set your last update date here - this is the single source of truth
+        const lastUpdateDate = '07/2025'; // Change this date when you update your site
+        
+        const copyrightContainers = document.querySelectorAll('.copyright-container small');
+        copyrightContainers.forEach(container => {
+            // Create the full copyright text with the centralized date
+            const copyrightText = `© Gabriel Kasmi / Last update: ${lastUpdateDate}`;
+            container.textContent = copyrightText;
+        });
+    }
+    
+    // Update all copyright dates on page load
+    updateLastUpdateDate();
 }); 
