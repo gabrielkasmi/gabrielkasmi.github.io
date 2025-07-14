@@ -63,80 +63,111 @@
           <p><small></small></p>
         </div>
       </header>
-      <section> 
 
-        <h2 id="Current">Current Research</h2>
-
-        <h3>Explainability and Signal Processing</h3>
-
-        <p>
-          My first topic of interest is to improve our understanding of deep learning models. In computer vision, 
-          current methods focus on assessing where models focus on input images. However, these approaches
-          are uninformative when it comes to explaining why classification models can fail to correctly predict 
-          some instances.
-        </p>
-
-        <p>
-          My research consists in using tools from classical signal processing theory, in particular the wavelet
-          transform, to meaningfully decompose the input image and then to identify the important parts of this 
-          decomposition in the model's prediction. I am using the wavelet transform rather than the Fourier transform
-          as the wavelet decomposition of an image is localized in space and in frequency, which on images 
-          enables us to assess where and what (scales) models see. 
-        </p>
-
-        <p>
-          During the PhD thesis, we introduced the <a href="https://openreview.net/forum?id=112o4j4VCY">wavelet scale attribution method (WCAM)</a>, 
-          an extension of <a href="https://openreview.net/forum?id=hA-PHQGOjqQ">Fel's et. al.</a> attribution method
-          to the wavelet domain in order to assess what models see on an image. Scales of the wavelet transform correspond to 
-          structural components of the image: therefore, we can assess whether the model relies on shapes, textures or other 
-          intermediary components to make its prediction. 
-        </p>
-
-        <p>
-          I believe that the WCAM can be expanded into several interesting directions:
+        <section>
+          <h2 id="Current">Understanding and Scaling Deep Learning for the Energy Transition</h2>
+          <p>
+            My research explores how we can <strong>better understand, trust, and deploy 
+              deep learning systems</strong> to support the energy transition. 
+            I work at the intersection of <strong>explainable AI, geospatial 
+              data, and renewable energy systems</strong>, combining theoretical insights 
+              with applied work on the causes and consequences of rooftop photovoltaic (PV) development.
+          </p>
+          <p>This work is organized along three main threads:</p>
+        
+          <h3>Reliability and Interpretability of Machine Learning Models</h3>
+          <p>
+            The use of deep learning for computer vision is now 
+            commonplace. The real challenge lies not in implementation, but in 
+            <strong>deploying these models at scale and trusting their predictions</strong>.
+          </p>
+          <p>
+            My PhD was designed as a cookbook to improve the reliability 
+            of neural networks applied to the remote sensing of PV systems. 
+            See this <a href="https://www.youtube.com/watch?v=00000000000">paper</a> for a summary 
+            of the approach and how interpretability and data augmentation can be used to 
+            improve the reliability of deep learning models.
+            </p>
+            <p>
+            I notably introduced a new explainability method, the 
+            <strong><a href= "https://openreview.net/forum?id=112o4j4VCY">Wavelet Scale Attribution Method 
+              (WCAM, XAI in Action workshop @ NeurIPS 2023)</a></strong>, 
+            which reveals whether models rely on shapes, 
+            textures, or other structural features—offering 
+            richer insights than standard pixel-based saliency maps.
+          </p>
+          <p>
+            We later expanded this into the 
+            <strong><a href="https://gabrielkasmi.github.io/wam/">Wavelet Attribution Method 
+              (WAM, ICML 2025)</a></strong>, 
+            which unifies feature attribution across different modalities 
+            (images, audio, etc.). Looking ahead, I’m exploring how to select meaningful 
+            <em>feature attribution domains</em> (with wavelets as one example) 
+            and whether we can combine <strong>concept-based explanations</strong> (powerful but abstract) 
+            with the practicality of feature attribution.
+          </p>
+          <p><strong>Current research directions:</strong></p>
           <ul>
-            <li>
-              First, it can be expanded to 1D signals such as sounds,
-            </li>
-            <li>
-              Second, I believe that there can be interesting connections between the scale decomposition 
-              obtained with the WCAM and recent concept-based XAI approaches such as <a href="https://arxiv.org/abs/2211.10154">CRAFT</a>.   
-            </li>
-            <li>
-              Finally, the scales of the wavelet transform are localized in frequency, and several works (see for instance this 
-              <a href="https://openreview.net/forum?id=rQ1cNbi07Vq">work</a> or 
-              this <a href="https://openaccess.thecvf.com/content/ICCV2021/html/Chen_Amplitude-Phase_Recombination_Rethinking_Robustness_of_Convolutional_Neural_Networks_in_Frequency_ICCV_2021_paper.html">one</a>) leveraged
-              frequency-based methods to characterize and analyze the robustness of models to various input perturbations. 
-            </li>
+            <li>Feature attribution spaces – how to select and use them effectively 
+              (<a href="https://gabrielkasmi.github.io/wam/static/content/application.html">see the What’s Next section here</a>).</li>
+            <li>Connecting feature attribution with concept-based explanations and structural analysis (e.g., circuits, CRAFT).</li>
           </ul>
-
-          Feel free to reach me if you are interested in collaborating!
-        </p>
-
-        <h3>Improving the Observability of Rooftop PV Systems</h3>
-
-        <p>
-          The photovoltaic (PV) installed capacity grows very quickly, both worldwide and in France. 
-          A specificity of PV energy is that a sizable share of the systems are located on rooftops 
-          (20% of the installed capacity in France).
-          These rooftop systems are not well known by authorities or transmission system operators. 
-          The main goal of my thesis was to look for methods to improve the knowledge regarding 
-          the rooftop PV fleet and ultimately to introduce
-          new methods for accurately estimating the PV power production.
-        </p>
-
-        <p>
-          In the thesis, we've introduced a method for constructing a large scale registry of rooftop PV systems 
-          and demonstrated that we could estimate the rooftop PV power production with relatively few information 
-          on these systems. 
-        </p>
-
-        <p>
-          The last chapter of the thesis raises a lot of questions for improving current methods for PV power estimation,
-          in particular since the task of fairly comparing the proposed method with the TSO current practices is very challenging. 
-          I also have in mind potential applications beyond France, for instance in countries where the share of small scale PV is 
-          higher than in France.
-        </p>
+        
+          <h3>🛰️ Remote Sensing and Mapping of PV Systems</h3>
+          <p>
+            A large share of PV capacity is distributed across rooftops, but 
+            these systems are often poorly mapped and monitored. 
+            In France, this stems from <strong>fragmented information</strong> spread 
+            across stakeholders, each with their own priorities and data formats.
+          </p>
+          <p>
+            The core of my thesis focused on mapping rooftop PV 
+            systems and building a nationwide registry. I developed 
+            <strong><a href="https://gabrielkasmi.github.io/deeppvmapper/">DeepPVMapper</a></strong>, an algorithm for 
+            detecting and characterizing rooftop PV systems at scale, and released an open-source library, 
+            <strong><a href="https://github.com/gabrielkasmi/pypvroof"></a>PyPVRoof</a></strong>, for further development. 
+            Using these tools, 
+            we mapped over 500,000 systems in France and validated the results 
+            against existing datasets—showing their potential 
+            to <strong>bridge critical information gaps</strong> as PV deployment accelerates.
+          </p>
+          <p>
+            Today, my focus is on making these mapping methods more 
+            actionable, reliable, and computationally efficient. One emerging direction is designing 
+            an <em>optimal pipeline</em> that balances accuracy, 
+            computational cost, and data availability. I’m also exploring 
+            mapping in new contexts, particularly in 
+            <strong>developing countries</strong> where PV is often adopted informally.
+          </p>
+          <p><strong>Current research directions:</strong></p>
+          <ul>
+            <li>Optimal pipelines for efficient and accurate PV mapping.</li>
+            <li>Multi-label mapping for richer characterization of rooftop systems.</li>
+          </ul>
+        
+          <h3>🌍 Applications: PV Power Estimation and Socio-Economic Insights</h3>
+          <p>
+            Beyond methodological work, I apply these tools to tackle <strong>real-world energy challenges</strong>. The ultimate goal of rooftop PV mapping is to 
+            improve <strong>observability</strong>, enabling grid operators 
+            to produce precise estimates of rooftop PV generation.
+          </p>
+          <p>
+            The final chapter of my thesis introduced a simplified method for 
+            PV production estimation (see the paper <a href="https://www.mdpi.com/1996-1073/17/17/4353">here</a>). 
+            We demonstrated that this method slightly outperforms the 
+            one currently used by the French transmission system operator (TSO) 
+            and, importantly, better accounts for <strong>self-consumption practices</strong>.
+          </p>
+          <p>
+            I have also co-supervised work leveraging DeepPVMapper 
+            data to analyze <strong>socio-economic patterns</strong> in PV adoption, from local to national scales.
+          </p>
+          <p><strong>Current research directions:</strong></p>
+          <ul>
+            <li>The impact of self-consumption on PV power prediction.</li>
+            <li>PV deployment vs. targets: are we on track to meet national goals?</li>
+          </ul>
+        </section>
 
         <!-- Back to top button -->
         <button class="back-to-top" title="Back to top">↑</button>
@@ -181,6 +212,7 @@
           </li>
         </ul>
 
+        <!--- 
         <p>
           <b>Abstract</b>:
           Photovoltaic (PV) energy generation plays a crucial role in the energy 
@@ -201,7 +233,7 @@
           Zenodo repository containing the dataset by clicking here:
           <a href="https://doi.org/10.5281/zenodo.7358126"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.7358126.svg" alt="DOI"></a>.
         </p>
-        
+        --->
         <ul>
           <li>
             Kasmi, G.; Touron, A.; Blanc, P.; Saint-Drenan, Y.-M.; Fortin, M.; Dubus, L. (2024)
@@ -209,7 +241,8 @@
             <i>Energies 17</i>(17), 4353.
           </li>
         </ul>
-
+        <!---
+        
         <p>
           <b>Abstract</b>:
           The global photovoltaic (PV) installed capacity, vital for the electric sector’s decarbonation, 
@@ -231,7 +264,7 @@
           study shows that limited information is sufficient to derive a reasonably good estimation 
           of the PV power production of small-scale systems. The article can be accessed <a href="https://doi.org/10.3390/en17174353">here</a>.
         </p>
-
+        -->
         <ul>
           <li>
             Kasmi, G.; Dubus, L; Saint-Drenan, Y.-M.; Blanc, P. (2025)
@@ -240,7 +273,7 @@
             <i>Environmental Data Science 4</i>(e22).
           </li>
         </ul>
-
+        <!---
         <p>
           <b>Abstract</b>:
           Photovoltaic (PV) energy grows rapidly and is crucial for the decarbonization of electric systems. 
@@ -263,6 +296,7 @@
           systems using overhead imagery and deep learning models. 
           The article can be accessed <a href="https://doi.org/10.1017/eds.2025.13">here</a>.
         </p>  
+        -->
 
         <h3> International conferences proceedings (peer reviewed) </h3>
 
@@ -274,8 +308,6 @@
             <a href="https://arxiv.org/abs/2410.01482">Link</a>.
           </li>
         </ul>
-
-
 
         <h3>Workshops (peer reviewed)</h3>
 
@@ -306,14 +338,14 @@
 
         <h3>Oral presentations</h3>
 
-        <!--add ICEM 2024, Journée du PV SIRTA
-        update the site
-        add the workshop AIA ICML
-        
-        --->
-
-
         <ul>
+          <li>
+            Kasmi, G., Touron, A., Blanc, P. Saint-Drenan, Y.-M.,& Dubus, L. (2025).
+            Enhancing Rooftop PV Observability in France: 
+            A Comparative Evaluation of Physics-based methods with the TSO’s approach. 
+            <i>In International Conference in Energy and Meteorology (ICEM), Padova, Italy </i>.
+            <a href="https://www.wemcouncil.org/ICEMs/ICEM2025/ICEM2025_20250603_Giganti_1500_Kasmi.pdf">Slides.</a>
+          </li>
           <li>
             Kasmi, G., Touron, A., Blanc, P. Saint-Drenan, Y.-M., Fortin, M.,& Dubus, L. (2023).
             Enhancing regional PV power estimation using physics-based models, solar irradiance data and deep 
@@ -327,8 +359,6 @@
             PV output in France. <i> In MACLEAN Workshop @Cap/RFIAP, Vannes, France </i>.
             <a href="https://caprfiap2022.sciencesconf.org/data/pages/pitch_kasmi.pdf">Slides</a>.
           </li>
-
-
           <li>
             Kasmi, G., Dubus, L., Saint-Drenan, Y. M., & Blanc, P. (2022). Assessment of the potential of 
             Earth observation data and deep convolutional neural networks to improve the estimation and forecast 
@@ -378,7 +408,7 @@
           </li>
         </ul>
 
-        <h2 id="Peer">Peer review</h2>
+        <h2 id="Peer">Reviewer</h2>
 
         <h3>Journals</h3>
         <ul>
@@ -387,7 +417,9 @@
         </ul>
         <h3>Conferences</h3>
         <ul>
-          <li>Ethics reviewer for the Benchmark and Datasets Track at <a href="https://neurips.cc/Conferences/2024">NeurIPS</a> 2024</li>
+          <li>Ethics reviewer for the Benchmark and Datasets Track at 
+            NeurIPS <a href="https://neurips.cc/Conferences/2024">2024</a> 
+            and NeurIPS <a href= "https://neurips.cc/Conferences/2025">2025</a></li>
         </ul>
         <h3>Workshops</h3>
         <ul>
@@ -397,6 +429,7 @@
                                                                       <a href="https://www.climatechange.ai/events/iclr2025">ICLR 2025</a>)</li>
           <li><a href="https://sites.google.com/view/wicv-cvpr-2024/">Women in Computer Vision workshop (ECCV 2024)</a></li>
           <li><a href="https://interpretable-ai-workshop.github.io/">Interpretable AI: Past, Present and Future workshop (NeurIPS 2024)</a></li>
+          <li><a href="https://actionable-interpretability.github.io/">Actionable Interpretability Workshop (ICML 2025)</a></li>
         </ul>
 
         <h2 id="Misc">Miscellaneous works</h2>
