@@ -297,7 +297,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Centralized last update date management
     function updateLastUpdateDate() {
         // Set your last update date here - this is the single source of truth
-        const lastUpdateDate = '07/2025'; // Change this date when you update your site
+        const lastUpdateDate = '03/2026'; // Change this date when you update your site
         
         const copyrightContainers = document.querySelectorAll('.copyright-container small');
         copyrightContainers.forEach(container => {
