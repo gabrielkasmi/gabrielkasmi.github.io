@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DeepPVMapper - an open-source, deep learning-based pipeline that maps rooftop photovoltaic installations from aerial imagery at national scale.">
+    <title>DeepPVMapper | Gabriel Kasmi</title>
+
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/pygment_trac.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍🔬</text></svg>">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <header>
+        <div class="header-identity">
+          <img src="../assets/photo_.JPG" alt="Gabriel Kasmi" class="picture" loading="lazy" />
+          <div>
+            <h1 class="title">DeepPVMapper</h1>
+            <p class="tagline">Gabriel Kasmi — Applied AI Scientist</p>
+            <p class="icons-center">
+               <a href="https://scholar.google.com/citations?user=Rt14jucAAAAJ&hl=fr" title="Google Scholar"><i class="ai ai-google-scholar ai-2x"></i></a>
+               <a href="https://arxiv.org/search/?searchtype=author&query=Kasmi%2C+G" title="arXiv"><i class="ai ai-arxiv ai-2x"></i></a>
+               <a href="https://twitter.com/gabriel_kasmi" title="Twitter"><i class="fab fa-twitter"></i></a>
+               <a href="https://www.linkedin.com/in/gabriel-kasmi/" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+               <a href="https://github.com/gabrielkasmi" title="GitHub"><i class="fab fa-github"></i></a>
+               <a href="https://orcid.org/0000-0002-7774-4302" title="ORCID"><i class="ai ai-orcid ai-2x"></i></a>
+            </p>
+          </div>
+        </div>
+
+        <nav>
+          <ul>
+             <li><a href="../index.html">Home</a></li>
+             <li class="nav-dropdown">
+               <a href="research.html">Research</a>
+               <div class="nav-dropdown-content">
+                 <a href="research.html#Current">Current Research</a>
+                 <a href="research.html#Publications">Selected Publications</a>
+                 <a href="research.html#FullPublications">Full Publication Record</a>
+                 <a href="phd_thesis.html">PhD Thesis</a>
+                 <a href="misc.html">Miscellaneous</a>
+               </div>
+             </li>
+             <li class="nav-dropdown">
+               <a href="teaching.html">Teaching & Popularization</a>
+               <div class="nav-dropdown-content">
+                 <a href="teaching.html#Teaching">Teaching</a>
+                 <a href="teaching.html#Talks">Talks & Popularization</a>
+                 <a href="teaching.html#Misc">In Press</a>
+               </div>
+             </li>
+             <li><a href="cv.html">CV</a></li>
+             <li><a href="deeppvmapper.html" class="active">DeepPVMapper</a></li>
+             <li><a href="software.html">Software</a></li>
+             <li><a href="../blog/index.html">Blog</a></li>
+          </ul>
+        </nav>
+      </header>
+      <section>
+
+        <!-- Back to top button -->
+        <button class="back-to-top" title="Back to top">↑</button>
+
+        <p>
+          An open-source, deep learning-based pipeline that maps rooftop
+          photovoltaic installations from aerial imagery, at national scale —
+          and the research foundation Solar Dashboard is built on.
+        </p>
+
+        <a class="project-card-visual" href="https://gabrielkasmi.github.io/deeppvmapper/" title="Explore the DeepPVMapper project">
+          <img src="https://gabrielkasmi.github.io/deeppvmapper/static/images/assets/mapping.webp" alt="Map of rooftop PV systems detected by DeepPVMapper across France">
+          <span class="project-card-visual-caption">Rooftop PV systems mapped by DeepPVMapper across France — the darker, the higher the installed capacity. Explore the project →</span>
+        </a>
+
+        <div class="stat-grid">
+          <div class="stat-item">
+            <span class="stat-value">520k+</span>
+            <span class="stat-label">PV systems mapped</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">2.7 GWp</span>
+            <span class="stat-label">Estimated installed capacity</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">MIT</span>
+            <span class="stat-label">Open-source license</span>
+          </div>
+        </div>
+        <div class="badge-row">
+          <a class="badge-link" href="https://github.com/gabrielkasmi/deeppvmapper">GitHub repository</a>
+          <a class="badge-link" href="https://huggingface.co/spaces/gabrielkasmi/deeppvmapper">Live demo (Hugging Face)</a>
+          <a class="badge-link" href="https://gabrielkasmi.github.io/deeppvmapper/">Project website</a>
+        </div>
+
+        <h2 id="Pipeline">The pipeline</h2>
+        <p>
+          DeepPVMapper is a two-stage deep learning pipeline, inspired by 3D-PV-Locator (Meyer et al., 2022).
+          A classification model (Inception v3) first flags candidate image patches on aerial imagery; these
+          patches are then segmented with DeepLab v3 to extract precise rooftop PV polygons. Detections are
+          cross-referenced with the BD TOPO® building database to keep only rooftop-mounted systems and merge
+          detections belonging to the same roof, then characterized with <a href="https://pypi.org/project/pypvroof/">PyPVRoof</a>
+          (surface, tilt, orientation, installed capacity) to produce a geolocated PV registry. The models are
+          trained on BD-PV, an annotated dataset built on IGN's BD ORTHO® aerial imagery.
+        </p>
+
+        <a class="project-card-visual" href="https://gabrielkasmi.github.io/deeppvmapper/content/pipeline.html" title="Explore the pipeline in detail">
+          <img src="../assets/flowchart-dpm.png" alt="Flowchart of the DeepPVMapper pipeline">
+          <span class="project-card-visual-caption">From aerial imagery to geolocated PV registry — explore the pipeline in detail →</span>
+        </a>
+
+        <h2 id="Audit">Auditing grid-connection registries</h2>
+        <p>
+          Because DeepPVMapper's detections are independent of administrative records, they can be used to
+          audit official grid-connection registries (RTE/RNI) rather than the other way around. After correcting
+          for the pipeline's measured precision and recall by département, the resulting estimates reveal a
+          systematic underestimation of rooftop PV in these registries, particularly in rural areas. Read the
+          <a href="https://gabrielkasmi.github.io/deeppvmapper/content/main-results.html">full analysis →</a>.
+        </p>
+
+        <div class="stat-grid">
+          <div class="stat-item">
+            <span class="stat-value">34k</span>
+            <span class="stat-label">Samples used for validation</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">−10.1%</span>
+            <span class="stat-label">Global underestimation in official registries</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">36</span>
+            <span class="stat-label">Départements with significant underestimation</span>
+          </div>
+        </div>
+
+        <p>
+          Click here <a href="https://doi.org/10.5281/zenodo.7576814"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.7576814.svg" alt="DOI"></a>
+          to download the minimum data (images, model weights, additional data) to replicate the example provided in the
+          GitHub repository, or here <a href="https://doi.org/10.5281/zenodo.18630258"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.18630258.svg" alt="DOI"></a>
+          to download the full registry of 520k+ detected PV systems.
+        </p>
+
+        <p><strong>References</strong>:</p>
+        <ul>
+          <li>
+            Kasmi, G., Dubus, L., Blanc, P., & Saint-Drenan, Y. M. (2022).
+            Towards unsupervised assessment with open-source data of the accuracy of
+            deep learning-based distributed PV mapping.
+            <a href="https://arxiv.org/abs/2207.07466">arXiv preprint arXiv:2207.07466.</a>
+          </li>
+          <li>
+            Kasmi, G. (2024). Enhancing the Reliability of Deep Learning Models to Improve the
+            Observability of French Rooftop Photovoltaic Installations.
+            <a href="https://theses.fr/2024UPSLM027">PhD thesis, Université Paris sciences et lettres.</a>
+          </li>
+        </ul>
+
+      </section>
+      <footer class="copyright-container">
+        <p><small></small></p>
+      </footer>
+    </div>
+    <script src="../javascripts/scale.fix.js"></script>
+    <script src="../javascripts/main.js"></script>
+  </body>
+</html>

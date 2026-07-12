@@ -1,21 +1,11 @@
 <!doctype html>
 <html lang="en">
   <head>
-  	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-133810388-1"></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
-
-	  gtag('config', 'UA-133810388-1');
-	</script>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Projects developed by Gabriel Kasmi - DeepPVMapper, WAM, and PyPVRoof for AI and renewable energy applications.">
-    <title>Projects | Gabriel Kasmi</title>
+    <meta name="description" content="Software developed by Gabriel Kasmi - WAM and PyPVRoof for AI and renewable energy applications.">
+    <title>Software | Gabriel Kasmi</title>
 
     <link rel="stylesheet" href="../stylesheets/styles.css">
     <link rel="stylesheet" href="../stylesheets/pygment_trac.css">
@@ -30,17 +20,22 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1 class="title">Projects</h1>
-        <img src="../assets/photo_.JPG" alt="Gabriel Kasmi" class="picture" loading="lazy" />
-        <p class="icons-center">
-           <a href="https://scholar.google.com/citations?user=Rt14jucAAAAJ&hl=fr" title="Google Scholar"><i class="ai ai-google-scholar ai-2x"></i></a>
-           <a href="https://arxiv.org/search/?searchtype=author&query=Kasmi%2C+G" title="arXiv"><i class="ai ai-arxiv ai-2x"></i></a>
-           <a href="https://twitter.com/gabriel_kasmi" title="Twitter"><i class="fab fa-twitter"></i></a><br/><br />
-           <a href="https://www.linkedin.com/in/gabriel-kasmi/" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-           <a href="https://github.com/gabrielkasmi" title="GitHub"><i class="fab fa-github"></i></a>
-           <a href="https://orcid.org/0000-0002-7774-4302" title="ORCID"><i class="ai ai-orcid ai-2x"></i></a> 
-        </p>
-        
+        <div class="header-identity">
+          <img src="../assets/photo_.JPG" alt="Gabriel Kasmi" class="picture" loading="lazy" />
+          <div>
+            <h1 class="title">Software</h1>
+            <p class="tagline">Gabriel Kasmi — Applied AI Scientist</p>
+            <p class="icons-center">
+               <a href="https://scholar.google.com/citations?user=Rt14jucAAAAJ&hl=fr" title="Google Scholar"><i class="ai ai-google-scholar ai-2x"></i></a>
+               <a href="https://arxiv.org/search/?searchtype=author&query=Kasmi%2C+G" title="arXiv"><i class="ai ai-arxiv ai-2x"></i></a>
+               <a href="https://twitter.com/gabriel_kasmi" title="Twitter"><i class="fab fa-twitter"></i></a>
+               <a href="https://www.linkedin.com/in/gabriel-kasmi/" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+               <a href="https://github.com/gabrielkasmi" title="GitHub"><i class="fab fa-github"></i></a>
+               <a href="https://orcid.org/0000-0002-7774-4302" title="ORCID"><i class="ai ai-orcid ai-2x"></i></a>
+            </p>
+          </div>
+        </div>
+
         <nav>
           <ul>
              <li><a href="../index.html">Home</a></li>
@@ -62,117 +57,108 @@
                  <a href="teaching.html#Misc">In Press</a>
                </div>
              </li>
-             <li><a href="software.html" class="active">Projects</a></li>
+             <li><a href="cv.html">CV</a></li>
+             <li><a href="deeppvmapper.html">DeepPVMapper</a></li>
+             <li><a href="software.html" class="active">Software</a></li>
+             <li><a href="../blog/index.html">Blog</a></li>
           </ul>
         </nav>
-      
-        <div class="copyright-container">
-          <p><small></small></p>
-        </div>
+
       </header>
-      <section> 
+      <section>
 
         <!-- Back to top button -->
         <button class="back-to-top" title="Back to top">↑</button>
-        
-        <h2 id="DeepPVMapper">DeepPVMapper</h2>
-
-        <p>
-          DeepPVMapper is a deep learning-based mapping algorithm developed to map 
-          rooftop PV installations over France. 
-        </p>
-        <p>
-          <a href="https://github.com/gabrielkasmi/deeppvmapper">GitHub repository</a> &nbsp;|&nbsp;
-          <a href="https://gabrielkasmi.github.io/deeppvmapper">Project website</a>
-        </p>
-        <figure>
-            <img src="../assets/flowchart-dpm.png" alt="DeepPVMapper" style="max-width: 80%; height: auto;">
-            <figcaption>Flowchart of DeepPVMapper. 
-        </figcaption>
-        </figure>
-
-        <p>
-          The <a href="https://github.com/gabrielkasmi/deeppvmapper">Github repository</a> is accessible here. 
-          Click here <a href="https://doi.org/10.5281/zenodo.7576814"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.7576814.svg" alt="DOI"></a>
-          to download the minimum data (images, model weights, additional data) to replicate the example provided in the 
-          Github repository.
-        </p>
-
-        <p>
-        The list of publications associated with the paper are accessible here:
-        <ul>
-            <li>
-                Kasmi, G., Dubus, L., Blanc, P., & Saint-Drenan, Y. M. (2022). 
-                Towards unsupervised assessment with open-source data of the accuracy of 
-                deep learning-based distributed PV mapping. 
-                <a href="https://arxiv.org/abs/2207.07466">arXiv preprint arXiv:2207.07466.</a>
-            </li>
-        </ul>  
-        </p>
 
         <h2 id="WAM">Wavelet Attribution Method (WAM)</h2>
-        <p>
-          Feature attribution methods aim to improve the transparency of deep neural networks by identifying the input features that influence a model's decision. Pixel-based heatmaps have become the standard for attributing features to high-dimensional inputs, such as images, audio representations, and volumes. While intuitive and convenient, these pixel-based attributions fail to capture the underlying structure of the data. Moreover, the choice of domain for computing attributions has often been overlooked. This work demonstrates that the wavelet domain allows for informative and meaningful attributions. It handles any input dimension and offers a unified approach to feature attribution. Our method, the Wavelet Attribution Method (WAM), leverages the spatial and scale-localized properties of wavelet coefficients to provide explanations that capture both the where and what of a model's decision-making process. We show that WAM quantitatively matches or outperforms existing gradient-based methods across multiple modalities, including audio, images, and volumes. Additionally, we discuss how WAM bridges attribution with broader aspects of model robustness and transparency.
-        </p>
-        <p>
-          <a href="https://github.com/gabrielkasmi/wam">GitHub repository</a> &nbsp;|&nbsp;
-          <a href="https://gabrielkasmi.github.io/wam">Project website</a>
-        </p>
+        <div class="project-card">
+          <a class="project-card-visual" href="https://gabrielkasmi.github.io/wam" title="Explore the WAM project page">
+            <img src="https://gabrielkasmi.github.io/wam/static/images/wavelet_banner_1200x630.webp" alt="Wavelet Attribution Method banner">
+            <span class="project-card-visual-caption">One Wave To Explain Them All — explore the project →</span>
+          </a>
+          <p>
+            Feature attribution methods aim to improve the transparency of deep neural networks by identifying
+            the input features that influence a model's decision. WAM shows that the wavelet domain — rather
+            than the usual pixel domain — allows for informative, unified attributions that handle any input
+            dimension, capturing both the <em>where</em> and <em>what</em> of a model's decision-making process
+            across images, audio, and volumes. Accepted at ICML 2025.
+          </p>
+          <div class="badge-row">
+            <a class="badge-link" href="https://github.com/gabrielkasmi/wam">GitHub repository</a>
+            <a class="badge-link" href="https://gabrielkasmi.github.io/wam">Project website</a>
+            <a class="badge-link" href="https://icml.cc/virtual/2025/poster/44099">ICML 2025 poster</a>
+          </div>
+          <details>
+            <summary>Full abstract</summary>
+            <p>
+              Pixel-based heatmaps have become the standard for attributing features to high-dimensional
+              inputs, such as images, audio representations, and volumes. While intuitive and convenient,
+              these pixel-based attributions fail to capture the underlying structure of the data. Moreover,
+              the choice of domain for computing attributions has often been overlooked. Our method, the
+              Wavelet Attribution Method (WAM), leverages the spatial and scale-localized properties of
+              wavelet coefficients to provide explanations that capture both the where and what of a model's
+              decision-making process. We show that WAM quantitatively matches or outperforms existing
+              gradient-based methods across multiple modalities, including audio, images, and volumes.
+              Additionally, we discuss how WAM bridges attribution with broader aspects of model robustness
+              and transparency.
+            </p>
+          </details>
+        </div>
 
         <h2 id="PyPVRoof">PyPVRoof</h2>
-        <p>
-          PyPVRoof is a Python package to extract essential PV installation characteristics. 
-          These characteristics are tilt angle, azimuth, surface, localization, and installed capacity.
-        </p>
-        <p>
-          PyPVRoof is designed to cover all use cases regarding data availability and user needs 
-          and is based on a benchmark of the best existing methods. 
-          The package is designed to be used in a Jupyter notebook or in a Python script. 
-          It can be used with or without additional data (3D LiDAR data, additional registry). 
-          The package is designed to be used with Python 3.7 or higher.
-        </p>
-        <p>
-          The current version is available on PyPI: <a href="https://pypi.org/project/pypvroof/">https://pypi.org/project/pypvroof/</a>.
-        </p>
-
-        <figure>
-            <img src="../assets/flowchart-ppr.png" alt="PyPVRoof" style="max-width: 80%; height: auto;">
-            <figcaption>Flowchart of PyPVRoof. 
-        </figcaption>
-        </figure>
-
-        <p>
-          Photovoltaic (PV) energy grows at an unprecedented pace, 
-          which makes it difficult to maintain up-to-date and accurate PV registries, 
-          which are critical for many applications such as PV power generation estimation. 
-          This lack of qualitative data is especially true in the case of rooftop PV installations. 
-          As a result, extensive efforts are put into the constitution of PV inventories. 
-          However, although valuable, these registries cannot be directly used for monitoring 
-          the deployment of PV or estimating the PV power generation, as these tasks usually 
-          require PV systems characteristics. To seamlessly extract these characteristics 
-          from the global inventories, PyPVRoof. PyPVRoof is a Python package to extract essential 
-          PV installation characteristics. These characteristics are tilt angle, azimuth, 
-          surface, localization, and installed capacity. PyPVRoof is designed to cover all use 
-          cases regarding data availability and user needs and is based on a benchmark of the 
-          best existing methods. Data for replicating our accuracy benchmarks are available 
-          on our Zenodo repository, <a href="https://doi.org/10.5281/zenodo.7586879"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.7586879.svg" alt="DOI"></a>
-          and the package code is 
-          accessible on our <a href="https://github.com/gabrielkasmi/pypvroof">Github repository</a>.    
-        </p>
-        
-        <p>
-        The supporting preprint is accessible here:
-        <ul>
-            <li>
-                Trémenbert, Y., Kasmi, G., Dubus, L., Saint-Drenan, Y. M., & Blanc, P. (2023). 
-                PyPVRoof: a Python package for extracting the characteristics of rooftop 
-                PV installations using remote sensing data. 
-                <a href="arXiv preprint arXiv:2309.07143.">arXiv preprint arXiv:2309.07143.</a>
-            </li>
-        </ul>
-      </p>
+        <div class="project-card">
+          <a class="project-card-visual" href="https://github.com/gabrielkasmi/pypvroof" title="Explore the PyPVRoof repository">
+            <img src="../assets/flowchart-ppr.png" alt="Flowchart of the PyPVRoof package" style="max-width: 80%;">
+            <span class="project-card-visual-caption">Flowchart of PyPVRoof — explore the repository →</span>
+          </a>
+          <p>
+            PyPVRoof is a Python package to extract essential PV installation characteristics.
+            These characteristics are tilt angle, azimuth, surface, localization, and installed capacity.
+          </p>
+          <div class="badge-row">
+            <a class="badge-link" href="https://pypi.org/project/pypvroof/">PyPI package</a>
+            <a class="badge-link" href="https://github.com/gabrielkasmi/pypvroof">GitHub repository</a>
+          </div>
+          <p>
+            Data for replicating our accuracy benchmarks are available on our Zenodo repository,
+            <a href="https://doi.org/10.5281/zenodo.7586879"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.7586879.svg" alt="DOI"></a>
+          </p>
+          <details>
+            <summary>More details</summary>
+            <p>
+              PyPVRoof is designed to cover all use cases regarding data availability and user needs
+              and is based on a benchmark of the best existing methods. The package is designed to be used
+              in a Jupyter notebook or in a Python script. It can be used with or without additional data
+              (3D LiDAR data, additional registry). The package is designed to be used with Python 3.7 or higher.
+            </p>
+            <p>
+              Photovoltaic (PV) energy grows at an unprecedented pace, which makes it difficult to maintain
+              up-to-date and accurate PV registries, which are critical for many applications such as PV power
+              generation estimation. This lack of qualitative data is especially true in the case of rooftop PV
+              installations. As a result, extensive efforts are put into the constitution of PV inventories.
+              However, although valuable, these registries cannot be directly used for monitoring the deployment
+              of PV or estimating the PV power generation, as these tasks usually require PV systems
+              characteristics. PyPVRoof was built to seamlessly extract these characteristics from the global
+              inventories.
+            </p>
+            <p>
+              <strong>Reference</strong>:
+            </p>
+            <ul>
+              <li>
+                Trémenbert, Y., Kasmi, G., Dubus, L., Saint-Drenan, Y. M., & Blanc, P. (2023).
+                PyPVRoof: a Python package for extracting the characteristics of rooftop
+                PV installations using remote sensing data.
+                <a href="https://arxiv.org/abs/2309.07143">arXiv preprint arXiv:2309.07143.</a>
+              </li>
+            </ul>
+          </details>
+        </div>
 
       </section>
+      <footer class="copyright-container">
+        <p><small></small></p>
+      </footer>
     </div>
     <script src="../javascripts/scale.fix.js"></script>
     <script src="../javascripts/main.js"></script>

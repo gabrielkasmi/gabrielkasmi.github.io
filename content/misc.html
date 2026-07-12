@@ -1,16 +1,6 @@
 <!doctype html>
 <html lang="en">
   <head>
-  	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-133810388-1"></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
-
-	  gtag('config', 'UA-133810388-1');
-	</script>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,17 +20,22 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1 class="title">Miscellaneous</h1>
-        <img src="../assets/photo_.JPG" alt="Gabriel Kasmi" class="picture" loading="lazy" />
-        <p class="icons-center">
-           <a href="https://scholar.google.com/citations?user=Rt14jucAAAAJ&hl=fr" title="Google Scholar"><i class="ai ai-google-scholar ai-2x"></i></a>
-           <a href="https://arxiv.org/search/?searchtype=author&query=Kasmi%2C+G" title="arXiv"><i class="ai ai-arxiv ai-2x"></i></a>
-           <a href="https://twitter.com/gabriel_kasmi" title="Twitter"><i class="fab fa-twitter"></i></a><br/><br />
-           <a href="https://www.linkedin.com/in/gabriel-kasmi/" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-           <a href="https://github.com/gabrielkasmi" title="GitHub"><i class="fab fa-github"></i></a>
-           <a href="https://orcid.org/0000-0002-7774-4302" title="ORCID"><i class="ai ai-orcid ai-2x"></i></a> 
-        </p>
-        
+        <div class="header-identity">
+          <img src="../assets/photo_.JPG" alt="Gabriel Kasmi" class="picture" loading="lazy" />
+          <div>
+            <h1 class="title">Miscellaneous</h1>
+            <p class="tagline">Gabriel Kasmi — Applied AI Scientist</p>
+            <p class="icons-center">
+               <a href="https://scholar.google.com/citations?user=Rt14jucAAAAJ&hl=fr" title="Google Scholar"><i class="ai ai-google-scholar ai-2x"></i></a>
+               <a href="https://arxiv.org/search/?searchtype=author&query=Kasmi%2C+G" title="arXiv"><i class="ai ai-arxiv ai-2x"></i></a>
+               <a href="https://twitter.com/gabriel_kasmi" title="Twitter"><i class="fab fa-twitter"></i></a>
+               <a href="https://www.linkedin.com/in/gabriel-kasmi/" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+               <a href="https://github.com/gabrielkasmi" title="GitHub"><i class="fab fa-github"></i></a>
+               <a href="https://orcid.org/0000-0002-7774-4302" title="ORCID"><i class="ai ai-orcid ai-2x"></i></a>
+            </p>
+          </div>
+        </div>
+
         <nav>
           <ul>
              <li><a href="../index.html">Home</a></li>
@@ -62,13 +57,13 @@
                  <a href="teaching.html#Misc">In Press</a>
                </div>
              </li>
-             <li><a href="software.html">Projects</a></li>
+             <li><a href="cv.html">CV</a></li>
+             <li><a href="deeppvmapper.html">DeepPVMapper</a></li>
+             <li><a href="software.html">Software</a></li>
+             <li><a href="../blog/index.html">Blog</a></li>
           </ul>
         </nav>
       
-        <div class="copyright-container">
-          <p><small></small></p>
-        </div>
       </header>
       <section> 
 
@@ -227,6 +222,9 @@
         </p>
 
       </section>
+      <footer class="copyright-container">
+        <p><small></small></p>
+      </footer>
     </div>
     <script src="../javascripts/scale.fix.js"></script>
     <script src="../javascripts/main.js"></script>

@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Using wavelet decomposition to explain what a deep learning model actually detects, and why DeepPVMapper turned out to be a grid detector.">
+    <title>What Does a Solar Panel Detector Actually See? | Gabriel Kasmi</title>
+
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/pygment_trac.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍🔬</text></svg>">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <header>
+        <div class="header-identity">
+          <img src="../assets/photo_.JPG" alt="Gabriel Kasmi" class="picture" loading="lazy" />
+          <div>
+            <h1 class="title">Blog</h1>
+            <p class="tagline">Gabriel Kasmi — Applied AI Scientist</p>
+            <p class="icons-center">
+               <a href="https://scholar.google.com/citations?user=Rt14jucAAAAJ&hl=fr" title="Google Scholar"><i class="ai ai-google-scholar ai-2x"></i></a>
+               <a href="https://arxiv.org/search/?searchtype=author&query=Kasmi%2C+G" title="arXiv"><i class="ai ai-arxiv ai-2x"></i></a>
+               <a href="https://twitter.com/gabriel_kasmi" title="Twitter"><i class="fab fa-twitter"></i></a>
+               <a href="https://www.linkedin.com/in/gabriel-kasmi/" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+               <a href="https://github.com/gabrielkasmi" title="GitHub"><i class="fab fa-github"></i></a>
+               <a href="https://orcid.org/0000-0002-7774-4302" title="ORCID"><i class="ai ai-orcid ai-2x"></i></a>
+            </p>
+          </div>
+        </div>
+
+        <nav>
+          <ul>
+             <li><a href="../index.html">Home</a></li>
+             <li class="nav-dropdown">
+               <a href="../content/research.html">Research</a>
+               <div class="nav-dropdown-content">
+                 <a href="../content/research.html#Current">Current Research</a>
+                 <a href="../content/research.html#Publications">Selected Publications</a>
+                 <a href="../content/research.html#FullPublications">Full Publication Record</a>
+                 <a href="../content/phd_thesis.html">PhD Thesis</a>
+                 <a href="../content/misc.html">Miscellaneous</a>
+               </div>
+             </li>
+             <li class="nav-dropdown">
+               <a href="../content/teaching.html">Teaching & Popularization</a>
+               <div class="nav-dropdown-content">
+                 <a href="../content/teaching.html#Teaching">Teaching</a>
+                 <a href="../content/teaching.html#Talks">Talks & Popularization</a>
+                 <a href="../content/teaching.html#Misc">In Press</a>
+               </div>
+             </li>
+             <li><a href="../content/cv.html">CV</a></li>
+             <li><a href="../content/deeppvmapper.html">DeepPVMapper</a></li>
+             <li><a href="../content/software.html">Software</a></li>
+             <li><a href="index.html" class="active">Blog</a></li>
+          </ul>
+        </nav>
+
+      </header>
+      <section>
+
+        <!-- Back to top button -->
+        <button class="back-to-top" title="Back to top">↑</button>
+
+        <p><a href="index.html">← Back to Blog</a></p>
+
+        <h2 id="Top">What Does a Solar Panel Detector Actually See?</h2>
+
+        <div class="post-meta">
+          <span class="badge-link">July 2026</span>
+          <span class="badge-link">Explainable AI</span>
+          <span class="badge-link">Computer Vision</span>
+          <span class="badge-link">DeepPVMapper</span>
+        </div>
+
+        <div class="blog-post-body">
+
+        <p>
+          When I was developing <a href="../content/deeppvmapper.html">DeepPVMapper</a> — a deep learning
+          pipeline that maps rooftop photovoltaic installations from aerial imagery across France — the
+          question I got asked most wasn't how accurate the model was. It was simpler, and harder:
+          does it actually detect solar panels?
+        </p>
+
+        <p>
+          At first this sounds like the same question. It isn't. A model can score well on a held-out
+          test set and still be latching onto the wrong thing. Precision and recall tell you the model
+          agrees with your labels; they don't tell you why. And "why" is exactly what you need before
+          trusting a model deployed at the scale of an entire country, because the failure modes that
+          matter — the ones that surface once you leave the validation set and hit a new region, a new
+          roof material, a new camera — are invisible to an aggregate metric.
+        </p>
+
+        <h3>Why "what does it see" is hard</h3>
+
+        <p>
+          The instinctive answer is to reach for an explainability method, get a saliency map, and look
+          at which pixels the model attended to. I did that. It's the standard toolkit — Grad-CAM,
+          integrated gradients, occlusion-based attributions — and all of these answer the same question:
+          <em>where</em> did the model look?
+        </p>
+
+        <p>
+          That's useful, but it isn't the question I needed answered. For a model, a solar panel is not
+          a semantic category — it's a distribution of pixel intensities. What I needed to know wasn't
+          where a prediction came from on the image, but <em>what kind of visual structure</em> it was
+          reacting to at that location. Was it the fine, repetitive texture of individual PV cells and
+          their grid lines? The coarse rectangular outline of the array against the roof? Something else
+          entirely — a skylight, a water tank, a shadow with the right aspect ratio? None of the existing
+          pixel-domain tools could answer that. They could point at a location; they couldn't describe
+          what was there from the model's point of view.
+        </p>
+
+        <h3>Decomposing the image into scales</h3>
+
+        <p>
+          This gap is what pushed us to build a new attribution method based on <strong>wavelet
+          decomposition</strong>, first introduced as the Wavelet Scale Attribution Method (WCAM), and
+          later generalized as the
+          <a href="https://gabrielkasmi.github.io/wam/">Wavelet Attribution Method (WAM)</a> at ICML 2025.
+        </p>
+
+        <p>
+          Wavelets decompose an image into a set of scales — from coarse, low-frequency components (the
+          general shape and layout of an object) to fine, high-frequency components (texture, edges,
+          small repeated patterns). Unlike a plain pixel-domain heatmap, a wavelet attribution tells you,
+          for a given location, <em>which scale</em> of visual information the model's decision actually
+          depends on.
+        </p>
+
+        <figure class="blog-figure">
+          <img src="img/wavelets-and-the-grid-detector/space-scale-fig6-gradcam-vs-wcam.png" alt="Classic Grad-CAM heatmap next to the WCAM decomposition of the same prediction into scale bands">
+          <figcaption>
+            <strong>Figure 1.</strong> A classic pixel-domain saliency map (left) tells you <em>where</em>
+            the model looked, but collapses every scale into a single heatmap. The WCAM (right) breaks the
+            same prediction down by scale band (from coarse structures, &gt;8 px, to fine texture, 1–2 px),
+            showing exactly which spatial frequency the decision relies on. Source:
+            <a href="https://doi.org/10.1017/eds.2025.13">Kasmi et al., Environmental Data Science (2025)</a>.
+          </figcaption>
+        </figure>
+
+        <p>
+          Applied to a PV detection, this distinction is exactly what I was missing: does the model rely
+          mostly on the coarse shape of the array — a dark rectangle on a lighter roof — or on the fine
+          texture of individual modules and their grid pattern? Two models can produce an identical
+          bounding box and an identical saliency heatmap while relying on completely different, and not
+          equally reliable, visual evidence. This matters especially for PV systems, which are themselves
+          multi-scale objects: the same installation can be described as a roof-sized system, a cluster of
+          modules, or a few centimeters of grid line, depending on where you zoom in.
+        </p>
+
+        <figure class="blog-figure">
+          <img src="img/wavelets-and-the-grid-detector/space-scale-fig3-pv-multiscale.png" alt="A rooftop PV system decomposed from the overall system down to the fine details of a single module">
+          <figcaption>
+            <strong>Figure 2.</strong> The same PV installation, read at different scales: the overall
+            system on the roof (~10 m), the array as a whole (~2.5 m), a group of modules (~1–2 m), a
+            single module (&lt;1 m), and the fine grid pattern within a module (~0.1–0.2 m). A model can
+            latch onto any one of these — and only some of them are reliably specific to solar panels.
+            Source: <a href="https://doi.org/10.1017/eds.2025.13">Kasmi et al., Environmental Data Science (2025)</a>.
+          </figcaption>
+        </figure>
+
+        <p>
+          The clearest way to see what a model is actually keying on is to progressively strip away the
+          wavelet components it considers least important and watch what survives.
+        </p>
+
+        <figure class="blog-figure">
+          <img src="img/wavelets-and-the-grid-detector/grid-disappearance.gif" alt="Animation showing important zones and important components collapsing onto the grid pattern of a PV panel as less relevant wavelet components are removed">
+          <figcaption>
+            <strong>Figure 3.</strong> Input image, the model's important zones (a standard pixel-domain
+            heatmap), and the important components once the prediction is read in the wavelet domain. As
+            less relevant components are removed, what's left is the grid — not the panel as a whole.
+            Source: <a href="https://theconversation.com/photovolta-que-et-reseau-electrique-comment-une-ia-fiable-et-transparente-pourrait-faciliter-la-decarbonation-261681">Kasmi, The Conversation (2025)</a>.
+          </figcaption>
+        </figure>
+
+        <h3>The reveal: an excellent grid detector</h3>
+
+        <p>
+          Running this analysis at scale across DeepPVMapper's predictions gave a clear, and slightly
+          humbling, answer. The model wasn't, in general, detecting solar panels. It was detecting
+          <strong>grids</strong> — regular, high-frequency repeated patterns at a particular scale.
+          Actual PV arrays have that pattern, which is why the model worked as well as it did. But so do
+          a number of other things: greenhouse roofs, certain skylights, corrugated roofing, solar water
+          heaters, parking lot shade structures. Wherever that pattern showed up, at the scale the model
+          had learned to key on, it fired — regardless of whether a solar panel was actually there.
+        </p>
+
+        <div class="blog-figure-row">
+          <figure class="blog-figure">
+            <img src="img/wavelets-and-the-grid-detector/false-positive-farm-building.png" alt="False positive detection on a corrugated farm building roof, flagged as a PV array">
+            <figcaption>
+              <strong>Figure 4a.</strong> A farm building roof in the Manche, flagged as a PV array. The
+              corrugated roofing produces the same regular, high-frequency pattern the model associates
+              with solar panels.
+            </figcaption>
+          </figure>
+          <figure class="blog-figure">
+            <img src="img/wavelets-and-the-grid-detector/false-positive-greenhouse.png" alt="False positive detection on greenhouse tunnels, flagged as a PV array">
+            <figcaption>
+              <strong>Figure 4b.</strong> Greenhouse tunnels, also flagged. Same story: a grid-like texture
+              at the scale the model has learned to key on. Buildings like these were common enough in the
+              Manche to produce a steady stream of false positives.
+            </figcaption>
+          </figure>
+        </div>
+
+        <p>
+          Tellingly, a genuine PV installation is picked up for the same reason — not because the model
+          recognizes "solar panel" as a category, but because it finds the same grid signature.
+        </p>
+
+        <figure class="blog-figure">
+          <img src="img/wavelets-and-the-grid-detector/true-positive-pv-panel.png" alt="True positive detection on a small rooftop PV installation">
+          <figcaption>
+            <strong>Figure 5.</strong> A correctly detected rooftop PV installation. Its wavelet-scale
+            signature — a regular grid at a specific scale — is what the model actually relies on here too,
+            which is precisely why it can't reliably tell this apart from Figures 4a and 4b.
+          </figcaption>
+        </figure>
+
+        <p>
+          This is a far more actionable diagnosis than "false positive rate is X%." It names the specific
+          visual confound driving the errors, which means it can be acted on directly: targeted
+          hard-negative mining on grid-textured non-PV structures, augmentation that decouples grid
+          texture from array shape, or an architecture change that forces the model to weigh coarse-scale
+          shape cues rather than fine-scale texture alone.
+        </p>
+
+        <h3>Why this matters beyond one model</h3>
+
+        <p>
+          None of this is specific to solar panels. Any CNN-based detector trained on a finite set of
+          positive examples can end up encoding a proxy feature — a texture, a repeated pattern, a color —
+          rather than the semantic category it's supposed to represent. Wavelet-scale attribution gives a
+          way to check, for a specific model and a specific prediction, which one it actually learned —
+          before that gap costs accuracy on data you haven't seen yet.
+        </p>
+
+        <h3>Further reading</h3>
+
+        <ul>
+          <li>
+            [In French] A longer, less technical version of this argument, on how reliable and transparent
+            AI can support the integration of solar power into the grid, published in
+            <a href="https://theconversation.com/photovolta-que-et-reseau-electrique-comment-une-ia-fiable-et-transparente-pourrait-faciliter-la-decarbonation-261681">The Conversation</a>.
+          </li>
+          <li>
+            The full method behind this analysis, applied specifically to rooftop PV mapping: <em>Space-scale
+            exploration of the poor reliability of deep learning models: the case of the remote sensing of
+            rooftop photovoltaic systems</em>, published in
+            <a href="https://doi.org/10.1017/eds.2025.13">Environmental Data Science</a>.
+          </li>
+          <li>
+            The general-purpose version of the method: <em>One Wave To Explain Them All: A Unifying
+            Perspective on Feature Attribution</em>, published at
+            <a href="https://proceedings.mlr.press/v267/kasmi25a.html">ICML 2025</a>
+            (<a href="https://gabrielkasmi.github.io/wam/">project page</a>).
+          </li>
+        </ul>
+
+        </div>
+
+      </section>
+      <footer class="copyright-container">
+        <p><small></small></p>
+      </footer>
+    </div>
+    <script src="../javascripts/scale.fix.js"></script>
+    <script src="../javascripts/main.js"></script>
+  </body>
+</html>
