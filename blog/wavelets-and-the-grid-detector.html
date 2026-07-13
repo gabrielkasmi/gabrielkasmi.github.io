@@ -235,6 +235,14 @@
           texture from array shape, or an architecture change that forces the model to weigh coarse-scale
           shape cues rather than fine-scale texture alone.
         </p>
+        <p>
+          Circling back to accuracy, this pattern also helps interpret the sharp precision differences that 
+          we have observed across France. As many of corrugated roofing appears in rural areas in the North West
+          of France and especially in the Manche département, these roofs triggered a lot of false positives, 
+          driving the precision down. Similarly, the fact that well defined gridded PV systems are less present 
+          in Brittany also helps explain why the false negatives rate was higher in locations 
+          such as Morbihan or Côtes-d'Armor. 
+        </p>
 
         <h3>Why this matters beyond one model</h3>
 
@@ -245,7 +253,37 @@
           way to check, for a specific model and a specific prediction, which one it actually learned —
           before that gap costs accuracy on data you haven't seen yet.
         </p>
+        
+        <p>
+          This example is also a reminder that the failure mode is a property of the training data, not
+          just the architecture. The patterns a model relies on at deployment are the patterns it was
+          shown during training — change what's in the training set, and different patterns can take over.
+          A natural fix, already explored by
+          <a href="https://www.sciencedirect.com/science/article/pii/S0306261925003605">Thébaud <i>et al.</i></a>,
+          is to explicitly train on a wider range of rooftop types, and it does improve detection on
+          previously mismatched building types.
+        </p>
 
+        <p>
+          But that result raises a question I don't think can be answered without checking: is the gain
+          coming from genuine diversity — the model learning a richer, more invariant notion of "solar
+          panel" — or is it a more mundane form of hard-negative mining in disguise? Adding new regions to
+          a training set doesn't teach a CNN anything about geography; it only changes which patterns show
+          up as positives and negatives. If those new regions happen to contain grid-textured non-PV
+          structures the original set didn't, then what looks like an improvement from geographic diversity
+          is really the same shortcut being patched with more examples of what to exclude — not a
+          different, more reliable feature.
+        </p>
+
+        <p>
+          The distinction matters because it predicts different behavior down the line. A model that has
+          genuinely stopped keying on the grid pattern should generalize to a new, unseen texture confound.
+          A model that has simply seen more instances of "grid, but not PV" will most likely fail again the
+          next time a genuinely novel one shows up. Wavelet-scale attribution gives a direct way to tell
+          the two apart — check whether the retrained model's true and false positives still share the same
+          fine-scale signature, or whether it has started relying on coarser, shape-based cues instead.
+          That's the natural next step here, and one I'd rather test than assume.
+        </p>
         <h3>Further reading</h3>
 
         <ul>
