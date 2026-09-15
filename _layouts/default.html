@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+{% include head.html %}
+</head>
+<body>
+  <div class="wrapper">
+    {% include nav.html %}
+    <main class="site-main">
+      {{ content }}
+    </main>
+    {% include footer.html %}
+  </div>
+  <button class="back-to-top" title="Back to top" aria-label="Back to top">↑</button>
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+</body>
+</html>

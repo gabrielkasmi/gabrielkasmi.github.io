@@ -1,0 +1,141 @@
+---
+title: "The Blind Men and the Solar Panel"
+subtitle: "Reconciling grid connection data, remote sensing, and OpenStreetMap"
+description: >-
+  Reconciling grid connection data, remote sensing, and OpenStreetMap: why
+  comparing PV maps means agreeing on what a PV installation even is.
+date: 2026-08-15
+tags: [Open Data, Photovoltaics, OpenStreetMap]
+---
+
+<p>
+  MapYourGrid recently opened a <a href="https://wiki.openstreetmap.org/wiki/Proposal:Power_generation_storage">proposal to overhaul how power generation and storage are tagged in OpenStreetMap</a>. It's the first real revision since 2013, when the <a href="https://wiki.openstreetmap.org/wiki/Proposal:Power_generation_refinement">current scheme</a> — was put in place. On the surface it's a fairly dry tagging debate: new keys for <code>source</code>, <code>method</code>, <code>technology</code>, the ability to chain generators together, explicit roles like <code>main</code>, <code>backup</code>, <code>auxiliary</code>, <code>standalone</code>, a proper way to describe storage.
+</p>
+
+<p>
+  This debate is not only a question for cartographers. Every convention defines what a map is capable of showing — and, by construction, about what it can't. A registry, a satellite pipeline, and a crowdsourced map are not just three ways of drawing the same picture; they're three different answers to the question of where our blind spots sit when we try to monitor energy infrastructure. Get the object definition wrong, or leave it implicit, and the blind spot doesn't disappear — it just becomes invisible to whoever is relying on the map.
+</p>
+
+<p>
+  Photovoltaics is a good illustration, because it's far less simple to define than it looks. And the fact that OSM's own community is still renegotiating this, more than a decade after the last attempt, is a signal in itself. The tension we run into when comparing grid-connection data against remote sensing isn't a quirk of our particular pipeline — it's a modeling problem for the object "PV installation" itself, one that resurfaces even inside an open, collaboratively negotiated system built specifically to standardize this kind of thing.
+</p>
+
+<p>
+  Three groups routinely try to describe this object: grid operators, remote sensing pipelines, and open mapping communities. Each has a real, working definition. Each is right, given what it's built to see. None of them is describing the whole thing.
+</p>
+
+<p>
+  It turns out PV is the elephant of the old parable — the blind men and the elephant, updated for the energy transition. A grid operator has a hand on the tail. A satellite pipeline is feeling up the ear. A mapper is patting the trunk, in the dark, one contribution at a time. Each comes back with a description that's internally consistent, confidently reported, and completely partial. Nobody is lying. Nobody has the whole animal.
+</p>
+
+<figure class="blog-figure">
+  <img src="{{ '/blog/img/three-maps-three-definitions/elephants.webp' | relative_url }}" alt="The blind men and the elephant, reimagined with a grid operator, a satellite, and a mapper each examining a different part of the same PV installation">
+</figure>
+
+<h3>1. A blurry ground truth</h3>
+
+<p>
+  Before comparing <em>representations</em> of PV installations, it's worth asking whether the <em>thing being represented</em> holds still long enough to be defined.
+</p>
+
+<p>
+  Start with the easy case that turns out not to be so easy. <strong>Roof-mounted versus ground-mounted</strong> looks like a clean line — until you get to <strong>solar carports</strong> (ombrières). A carport's capacity and design logic sit closer to a power plant: engineered structures, often built and financed at commercial scale. But its injection mode, its ownership, and where it physically sits — a supermarket parking lot, a factory yard — sit closer to rooftop or commercial PV. It doesn't sit on either side of the roof/ground line; it sits on a continuum the line doesn't account for. And it's a useful reminder that capacity or surface area, the two variables everyone reaches for first, aren't always the right axis to classify on.
+</p>
+
+<p>
+  Then there's the question of what "a plant" even is. The intuitive answer is: a set of arrays, physically grouped, doing the same thing. Fine — but now ask what "a connection" is. Several arrays can sit behind a single grid connection point. Or the same physical site can end up behind two or three separate connection points, depending on how and when it was built out — an extension added a year later, metered separately because that's how the paperwork happened to work at the time. So you can have one connection representing one plant, or three connections representing what is, on the ground, a single plant. Same physical reality, different administrative count, depending entirely on build history that has nothing to do with the electricity being produced.
+</p>
+
+<p>
+  Layer onto that everything else that compounds before any comparison even starts:
+</p>
+
+<ul>
+  <li>injection modality — total feed-in versus self-consumption with partial feed-in, which can turn one physical system into two distinct administrative records;</li>
+  <li>installed capacity versus connected (rated) capacity, which routinely differ;</li>
+  <li><strong>plug-and-play systems</strong> — plugged into a wall outlet, producing real electricity, but not connected in the formal sense a grid operator's registry expects. Plugged to the building. Invisible to the connection registry.</li>
+</ul>
+
+<p>
+  And we haven't even gotten to what happens <em>after</em> a system is counted — production estimates, data sharing constraints, the fact that some of this is sensitive or simply private by design, no point de livraison published, no address disclosed. We've merely identified the system. We haven't started doing anything with it. It's worth naming honestly: this isn't a tidy taxonomy waiting for the right specialist to sort it out. It's a cheerful mess.
+</p>
+
+<h3>2. Three representations</h3>
+
+<p>
+  Each channel that tries to describe PV builds its own answer to the questions above — implicitly, usually without saying so. Before comparing them, it's worth laying out what each one is actually built to see, and what it structurally cannot.
+</p>
+
+<p>
+  <strong>Grid connection data</strong> records an administrative event: a system officially connected to the network, tied to a point de livraison. It captures what has gone through the connection pipeline. It's strong on some attributes — capacity, connection date — precisely because those are what the paperwork requires. It's only as complete as that pipeline: truncation at low-reporting thresholds, registration lag, aggregation choices that hide small or recent systems.
+</p>
+
+<p>
+  <strong>Open mapping</strong> works bottom-up: whoever surveys or digitizes a system tags it, at whatever granularity the local mapper chose, under a schema the community negotiates in the open — which is exactly what the proposal opening this piece is doing. Its strength is that it's not gated by any single operator or administrative process; a plug-and-play balcony unit can be tagged here even though it will never appear in a connection registry. Its weakness is the mirror image of that strength: coverage is only as good as who showed up to map it, and it's uneven by construction.
+</p>
+
+<p>
+  <strong>Remote sensing</strong> (DeepPVMapper-type pipelines) sees a physical, visual object: pixels classified as PV, grouped into a cluster. It's bound to the date of the imagery — a system installed after the flight doesn't exist as far as the model is concerned — and to whatever the detection and clustering logic decides counts as "one" installation. Worth flagging here, because it matters later: remote sensing is, by construction, exhaustive over its coverage area and globally interoperable — the same method applied to imagery anywhere gives a comparable output, with no dependency on a public operator's registry existing or being any good.
+</p>
+
+<p>
+  Three honest, internally consistent descriptions. Three different objects.
+</p>
+
+<h3>3. The comparison problem</h3>
+
+<p>
+  Given all that, why compare these sources at all? Because each one's blind spot is close to being another one's specialty. Grid data is authoritative on what has been formally connected and when, but blind to everything that hasn't gone through that process. Remote sensing is blind to intent, ownership, and anything installed after the last flight, but doesn't care whether an administrative process ever happened. Open mapping can catch what neither of the other two are built to catch, at the cost of even coverage.
+</p>
+
+<p>
+  The scale of the mismatch isn't a rounding error. Two examples make that concrete.
+</p>
+
+<p>
+  <strong>Pakistan</strong> had imported over 55.7 GW of solar panels cumulatively by the end of May 2026 [1]. Officially net-metered installed capacity, as reported by the distribution companies that are supposed to be tracking it, stood at just 6.5 GW at the close of the previous fiscal year — meaning at least 86% of everything imported never showed up as a formal, grid-tied connection [1]. Some of that gap is inventory sitting in warehouses or installation lag, but a meaningful share is systems that were never meant to touch the registry at all: commercial and industrial self-consumption setups, hybrid inverters paired with batteries, off-grid installations in areas net metering doesn't reach [1]. By 2025, distributed solar — net-metered, behind-the-meter, and off-grid combined — was already estimated to generate the equivalent of nearly half of all grid-supplied electricity in the country, almost entirely outside what the official connection data records [2].
+</p>
+
+<p>
+  <strong>Germany</strong> shows the same pattern at a different scale. As of early 2026, just over 1.3 million plug-and-play balcony systems ("Balkonkraftwerke") were formally registered in the Bundesnetzagentur's Marktstammdatenregister [3]. But researchers at HTW Berlin, working from retailer and user surveys, estimated the real number of installed units at somewhere between 1.5 and 4 million as early as February 2025 — when only around 862,000 were officially on the books [4]. Put differently: independent estimates suggest something like a third to half of these systems ever get registered at all, even though registration has been simplified to a fifteen-minute online form since 2024 [4].
+</p>
+
+<p>
+  In both cases, the grid operator isn't wrong about what it reports. It's reporting what its process is built to capture. The gap is structural, not a data quality problem waiting to be cleaned up — and it's large enough, in both directions, that treating any single source as ground truth would be a mistake with real consequences for grid planning and policy, not just an academic footnote.
+</p>
+
+<h3>4. Toward a shared ontology</h3>
+
+<p>
+  None of this argues for a single, unified data source that replaces the others — that's not realistic,
+  and it isn't the goal. Grid operators need what grid operators need; remote sensing will always be
+  bound to imagery dates; open mapping will always depend on who shows up.
+</p>
+
+<p>
+  But if the goal is to avoid double-counting, to actually compare what these sources see,
+  and to know when a gap reflects real underreporting rather than definitional mismatch, then
+  some shared reference is worth having — not a perfect one, but one that names the ambiguities
+  from §1 explicitly instead of letting each pipeline resolve them silently in its own conventions.
+</p>
+
+<p>
+  An openly negotiated, imperfect ontology doesn't resolve the mess. What it does is give each modality —
+  grid connection, remote sensing, crowdsourced mapping — a common surface to plug into, so that when
+  they disagree, the disagreement is legible instead of just noise. This is where the MapYourGrid
+  proposal earns a second mention. The current revision of the power plants descriptions is
+  accessible <a href="https://wiki.openstreetmap.org/wiki/Proposal:Power_generation_storage">here</a>.
+</p>
+
+<p>
+  The point was never to find the one true description of the elephant. It's to let everyone standing around it compare notes.
+</p>
+
+<h3>Sources</h3>
+
+<ul>
+  <li>[1] Business Recorder — Pakistan's solar revolution: phase-two in full swing, July 2026.</li>
+  <li>[2] Ember — The solarisation of Pakistan's energy economy, June 2026.</li>
+  <li>[3] 42watt.de — Balkonkraftwerk anmelden 2026: Anleitung für das Marktstammdatenregister, July 2026.</li>
+  <li>[4] SOLARPUNK — Krasse Dunkelziffer: So viele Balkonkraftwerke gibt es in Deutschland, November 2025.</li>
+</ul>

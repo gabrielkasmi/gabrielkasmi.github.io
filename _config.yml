@@ -1,0 +1,48 @@
+title: Gabriel Kasmi
+description: >-
+  ML scientist working on explainable AI, computer vision, and remote sensing
+  for energy systems.
+url: "https://gabrielkasmi.github.io"
+baseurl: ""
+
+author:
+  name: Gabriel Kasmi
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+permalink: /blog/:year/:month/:day/:title/
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+
+# The repo still contains the previous hand-written HTML site (index.html,
+# blog/index.html, content/*.html, blog/*.html). Everything under content/
+# and the individual old blog/*.html post pages is left as passthrough
+# static output (harmless duplicate pages at their old URLs) so nothing is
+# lost. index.html and blog/index.html are excluded here only because they
+# would otherwise collide with the new index.md and blog/index.md at the
+# exact same output path (Jekyll refuses to build with two files targeting
+# the same destination). The old files are NOT deleted or moved, only left
+# out of the generated _site/ output until you decide to remove them.
+exclude:
+  - index.html
+  - blog/index.html
+  - blog/blog-ideas
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - node_modules
+  - "*.gemspec"

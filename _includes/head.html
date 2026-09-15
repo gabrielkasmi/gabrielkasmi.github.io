@@ -1,0 +1,10 @@
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% if page.title %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }} — {{ site.description }}{% endif %}</title>
+<meta name="description" content="{{ page.description | default: site.description }}">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23181818'/><rect x='20' y='20' width='16' height='16' rx='2' fill='%23e8a33d'/><rect x='42' y='20' width='16' height='16' rx='2' fill='%23e8a33d'/><rect x='64' y='20' width='16' height='16' rx='2' fill='%23e8a33d'/><rect x='20' y='42' width='16' height='16' rx='2' fill='%23e8a33d'/><rect x='42' y='42' width='16' height='16' rx='2' fill='%23e8a33d'/><rect x='64' y='42' width='16' height='16' rx='2' fill='%23e8a33d'/><rect x='20' y='64' width='16' height='16' rx='2' fill='%23e8a33d'/><rect x='42' y='64' width='16' height='16' rx='2' fill='%23e8a33d'/><rect x='64' y='64' width='16' height='16' rx='2' fill='%23e8a33d'/></svg>">
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+{% feed_meta %}
+{% seo title=false %}
+{% if page.extra_head %}{{ page.extra_head }}{% endif %}
