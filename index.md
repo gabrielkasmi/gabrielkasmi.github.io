@@ -48,7 +48,7 @@ permalink: /
 
 <p>
   My background spans explainable AI, computer vision, and geospatial AI: I hold a PhD 
-  on deep learning for power systems (RTE / Mines Paris), and an MSc in Machine Learning at ENSAE.
+  on deep learning for power systems (RTE / Mines Paris), and an MSc in Machine Learning from ENSAE.
 </p>
 
 <p>
