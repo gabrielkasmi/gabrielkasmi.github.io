@@ -149,10 +149,11 @@ toc: true
 <h3>Publications in peer-reviewed journals</h3>
 <ul class="pub-list">
   <li>
-    <u>Kasmi, G.</u>, Saint-Drenan, Y. M., Trebosc, D., Jolivet, R., Leloux, J., Sarr, B., & Dubus, L. (2023).
-    A crowdsourced dataset of aerial images with annotated solar photovoltaic
-    arrays and installation metadata. <i>Scientific Data 10</i>(1), 59.
-    <a href="https://doi.org/10.1038/s41597-023-01951-4">Link</a>.
+    <u>Kasmi, G.</u>; Dubus, L; Saint-Drenan, Y.-M.; Blanc, P. (2025)
+    Space-scale exploration of the poor reliability of deep learning models: the
+    case of the remote sensing of rooftop photovoltaic systems.
+    <i>Environmental Data Science 4</i>(e22).
+    <a href="https://doi.org/10.1017/eds.2025.13">Link</a>.
   </li>
   <li>
     <u>Kasmi, G.</u>; Touron, A.; Blanc, P.; Saint-Drenan, Y.-M.; Fortin, M.; Dubus, L. (2024)
@@ -161,11 +162,10 @@ toc: true
     <a href="https://doi.org/10.3390/en17174353">Link</a>.
   </li>
   <li>
-    <u>Kasmi, G.</u>; Dubus, L; Saint-Drenan, Y.-M.; Blanc, P. (2025)
-    Space-scale exploration of the poor reliability of deep learning models: the
-    case of the remote sensing of rooftop photovoltaic systems.
-    <i>Environmental Data Science 4</i>(e22).
-    <a href="https://doi.org/10.1017/eds.2025.13">Link</a>.
+    <u>Kasmi, G.</u>, Saint-Drenan, Y. M., Trebosc, D., Jolivet, R., Leloux, J., Sarr, B., & Dubus, L. (2023).
+    A crowdsourced dataset of aerial images with annotated solar photovoltaic
+    arrays and installation metadata. <i>Scientific Data 10</i>(1), 59.
+    <a href="https://doi.org/10.1038/s41597-023-01951-4">Link</a>.
   </li>
 </ul>
 
@@ -262,13 +262,19 @@ toc: true
 <h3>Preprints</h3>
 <ul class="pub-list">
   <li>
+    <u>Kasmi, G.</u>, Saint-Drenan, Y. M., Dubus, L., & Blanc, P. (2026).
+    Nationally Consistent, Locally Incomplete: A Bayesian Remote-Sensing Audit
+    of Rooftop Photovoltaic Registries. <i>arXiv preprint arXiv:2609.16294</i>.
+    <a href="https://arxiv.org/abs/2609.16294">Link</a>.
+  </li>
+  <li>
     <u>Kasmi, G.</u> (2026).
     OpenPVMapper: A Multi-source, Nationwide Database of Rooftop
     Photovoltaic Systems in France. <i>arXiv preprint arXiv:2607.25153</i>.
     <a href="https://arxiv.org/abs/2607.25153">Link</a>.
   </li>
   <li>
-    Mbobda-Kuate, K., <u>Kasmi, G.</u> (2025)
+    Mbobda-Kuate, K., <u>Kasmi, G.</u> (2026)
     Is Bigger Always Better? Efficiency Analysis in Resource-Constrained Small
     Object Detection. <i>arXiv preprint arXiv:2603.02142</i>.
     <a href="https://arxiv.org/abs/2603.02142">Link</a>.
@@ -363,23 +369,23 @@ toc: true
 
 <h4>Tackling Climate Change with Machine Learning</h4>
 <p>
-  <a href="https://www.climatechange.ai/events/iclr2024">ICLR 2024</a>,
+  <a href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/TCCML/Reviewers">NeurIPS 2026</a>,
+  <a href="https://www.climatechange.ai/events/neurips2025">NeurIPS 2025</a>,
+  <a href="https://www.climatechange.ai/events/iclr2025">ICLR 2025</a>,
   <a href="https://www.climatechange.ai/events/neurips2024">NeurIPS 2024</a>
   (emergency reviewer),
-  <a href="https://www.climatechange.ai/events/iclr2025">ICLR 2025</a>,
-  <a href="https://www.climatechange.ai/events/neurips2025">NeurIPS 2025</a>,
-  <a href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/TCCML/Reviewers">NeurIPS 2026</a>.
+  <a href="https://www.climatechange.ai/events/iclr2024">ICLR 2024</a>.
 </p>
 
 <h4>Interpretability</h4>
 <p>
-  <a href="https://xai-in-action.github.io/">XAI in Action workshop (NeurIPS 2023)</a>,
-  <a href="https://interpretable-ai-workshop.github.io/">Interpretable AI: Past,
-  Present and Future workshop (NeurIPS 2024)</a>,
+  <a href="https://openreview.net/group?id=colmweb.org/COLM/2026/Workshop/AIW/Reviewers">Actionable
+  Interpretability Workshop at COLM 2026</a>,
   <a href="https://actionable-interpretability.github.io/">Actionable
   Interpretability Workshop (ICML 2025)</a>,
-  <a href="https://openreview.net/group?id=colmweb.org/COLM/2026/Workshop/AIW/Reviewers">Actionable
-  Interpretability Workshop at COLM 2026</a>.
+  <a href="https://interpretable-ai-workshop.github.io/">Interpretable AI: Past,
+  Present and Future workshop (NeurIPS 2024)</a>,
+  <a href="https://xai-in-action.github.io/">XAI in Action workshop (NeurIPS 2023)</a>.
 </p>
 
 <h4>Computer Vision</h4>

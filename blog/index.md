@@ -1,12 +1,12 @@
 ---
 layout: page
 title: Blog
-description: Notes on (explainable) AI, computer vision, open data and mapping, with occasional excursions into whatever's shaping the current AI landscape.
+description: Notes on (explainable) AI, computer vision, open data and mapping, with occasional excursions into whatever's coming to my mind.
 permalink: /blog/
 ---
 
 <p>
-  Notes on (explainable) AI, computer vision, open data and mapping, with occasional excursions into whatever's shaping the current AI landscape.
+  Notes on (explainable) AI, computer vision, open data and mapping, with occasional excursions into whatever's coming to my mind.
 </p>
 
 {% for post in site.posts %}
