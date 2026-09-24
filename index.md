@@ -53,7 +53,7 @@ permalink: /
 
 <p>
   I'm also the maintainer of
-  <a href="{{ '/projects/#deeppvmapper' | relative_url }}">DeepPVMapper</a>,
+  <a href="https://deeppvmapper.fr" target="_blank" rel="noopener noreferrer">DeepPVMapper</a>,
   an open-source, collaborative project for large-scale mapping of rooftop
   photovoltaic systems.
 </p>
