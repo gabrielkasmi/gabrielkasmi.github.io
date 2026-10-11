@@ -181,5 +181,5 @@ In the meantime, the crowdsourcing campaign is still going on. The more calibrat
 </p>
 
 <p>
-  <em>PV Check exists to check, with the help of volunteers, how reliable the detections of a rooftop PV model really are, and to build a reference against which a detector's confidence can be tested. The full story of why it exists and where it is going is discussed in <a href="../../12/rooftop-solar-needs-an-open-registry/">this post</a>.</em>
+  <em>PV Check exists to check, with the help of volunteers, how reliable the detections of a rooftop PV model really are, and to build a reference against which a detector's confidence can be tested. The full story of why it exists and where it is going is discussed in <a href="../../10/rooftop-solar-needs-an-open-registry/">this post</a>.</em>
 </p>

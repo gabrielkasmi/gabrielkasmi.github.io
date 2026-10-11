@@ -5,7 +5,7 @@ description: >-
   Rooftop solar is a blind spot in energy data. Why I think it needs an open,
   regularly updated registry, how DeepPVMapper and PV Check contribute to it,
   and what 213 volunteers checking detections make possible.
-date: 2026-10-12
+date: 2026-10-10
 tags: [Crowdsourcing, Photovoltaics, DeepPVMapper]
 ---
 
