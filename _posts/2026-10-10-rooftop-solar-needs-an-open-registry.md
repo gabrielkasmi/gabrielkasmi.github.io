@@ -53,11 +53,11 @@ I'm happy to see that other works such as <a href="https://open-energy-transitio
 </p>
 
 <p>
-I would like to expand DeepPVMapper to other countries, either by doing the mapping myself or by letting others reuse the source code and eventually feature their detections within the database, thus offering the same accessibility level as the map that I develop for France.
+I would like to expand DeepPVMapper to other countries, ideally through encouraging people to use and adapt the available source code to map their favorite places, and eventually feature their detections within the database. It would offer the same level of exposure of their results as the map that I develop for France. Actually I'm happy to see that DeepPVMapper already encouraged some works over <a href="https://www.linkedin.com/pulse/la-grande-mappa-dei-pannelli-solari-italiani-prima-parte-pascatti-qf86e/">Italy</a>.
 </p>
 
 <p>
-The rooftop PV detections -- gathered in the OpenPVMapper database -- are accessible through direct download, an API, an MCP server and soon a QGIS plugin. Anything that ends up hosted with OpenPVMapper will be accessible through these tools. The only requirement to use these tools is to refrain from using them for harmful purposes or scams. I know that this warning will not prevent bad guys from doing bad things, but at least they are warned that any unfair usage is against the terms and conditions.
+The rooftop PV detections- gathered in the OpenPVMapper database - are accessible through direct download, an API, an MCP server and soon a QGIS plugin. Anything that ends up hosted with OpenPVMapper will be accessible through these tools. The only requirement to use these tools is to refrain from using them for harmful purposes or scams. I know that this warning will not prevent bad guys from doing bad things, but at least they are warned that any unfair usage is against the terms and conditions.
 </p>
 
 <p>
@@ -101,7 +101,7 @@ Currently, there are more than 1M systems in OpenPVMapper, so the campaign can v
 </p>
 
 <p>
-If you'd like to participate in the update and training of the models, would like to contribute to a research article or wish to use the annotation platform PV Check, feel free to reach out to me.
+If you'd like to participate in the update and training of the models (e.g. by improving over this <a href="https://github.com/gabrielkasmi/deeppvmapper/pull/20">PR</a>), would like to contribute to a research article or wish to use the annotation platform PV Check, feel free to reach out to me.
 </p>
 
 <h3>5. Closing thoughts</h3>
