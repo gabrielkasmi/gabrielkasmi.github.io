@@ -48,7 +48,15 @@
 
 * { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; accent-color: var(--color-accent); }
+
+::selection { background: color-mix(in srgb, var(--color-accent) 28%, transparent); }
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
 
 body {
   margin: 0;
@@ -172,7 +180,14 @@ th { font-family: var(--font-serif); font-weight: 600; }
   font-size: 0.95rem;
   letter-spacing: 0.01em;
 }
-.site-nav a:hover, .site-nav a.active { color: var(--color-link); }
+.site-nav a:hover { color: var(--color-link); }
+.site-nav a[aria-current="page"] {
+  color: var(--color-text);
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
 
 .site-main { padding: 2.4em 0 4em; }
 
@@ -209,6 +224,7 @@ th { font-family: var(--font-serif); font-weight: 600; }
   margin: 0 0 0.8em;
 }
 .hero-affiliation {
+  white-space: nowrap;
   font-size: 0.92em;
   font-weight: 400;
   color: var(--color-text-muted);
@@ -216,9 +232,12 @@ th { font-family: var(--font-serif); font-weight: 600; }
 .hero-affiliation a { text-decoration: none; }
 .hero-affiliation a:hover { text-decoration: underline; }
 
-.icon-row { display: flex; flex-wrap: wrap; align-items: center; gap: 1em; margin: 0; }
+.icon-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.1em; margin: 0 0 0 -8px; }
 .icon-row a {
   display: inline-flex;
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
   align-items: center;
   justify-content: center;
   color: var(--color-text-muted);
@@ -227,8 +246,6 @@ th { font-family: var(--font-serif); font-weight: 600; }
 }
 .icon-row a svg { width: 19px; height: 19px; }
 .icon-row a:hover { color: var(--color-link); }
-.icon-row a.cv-link { color: var(--color-text-muted); }
-.icon-row a.cv-link:hover { color: var(--color-link); }
 
 .bio-aside {
   font-family: var(--font-serif);
@@ -237,6 +254,46 @@ th { font-family: var(--font-serif); font-weight: 600; }
   color: var(--color-text-muted);
   margin: 1.2em 0 0;
 }
+
+.recent-posts {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1em;
+}
+.recent-posts li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 1.5em;
+  padding: 0.75em 0;
+  margin: 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.recent-posts li:last-child { border-bottom: none; }
+.recent-posts a {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--color-text);
+  text-decoration: none;
+}
+.recent-posts a:hover { color: var(--color-link); }
+.recent-posts-sub {
+  grid-column: 1;
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+.recent-posts time {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: baseline;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.recent-posts-more { font-size: 0.95rem; }
 
 .section-nav {
   display: flex;
@@ -463,7 +520,10 @@ figcaption {
   border: 1px solid var(--color-border);
   background: var(--color-bg-raised);
   color: var(--color-text-muted);
-  font-size: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
   cursor: pointer;
   opacity: 0;
   pointer-events: none;
@@ -476,7 +536,23 @@ figcaption {
 
 @media (max-width: 640px) {
   body { font-size: 16px; }
-  .hero { flex-direction: column; }
+  .hero { flex-direction: column; align-items: flex-start; gap: 1.1em; }
+  .site-header { flex-wrap: nowrap; gap: 1.2em; padding-block: 0.75em; }
+  .site-nav {
+    flex: 1;
+    min-width: 0;
+    flex-wrap: nowrap;
+    gap: 1.2em;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 24px), transparent);
+            mask-image: linear-gradient(to right, #000 calc(100% - 24px), transparent);
+  }
+  .site-nav::-webkit-scrollbar { display: none; }
+  .site-nav a { white-space: nowrap; padding-block: 0.35em; }
+  .site-nav a:last-child { padding-right: 24px; }
+  .recent-posts li { grid-template-columns: minmax(0, 1fr); }
+  .recent-posts time { grid-column: 1; grid-row: auto; }
   .hero-photo { width: 110px; height: 110px; }
   h1 { font-size: 1.6rem; }
   h2 { font-size: 1.25rem; }

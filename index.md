@@ -9,7 +9,10 @@ permalink: /
 ---
 
 <div class="hero">
-  <img src="{{ '/assets/photo_.JPG' | relative_url }}" alt="Gabriel Kasmi" class="hero-photo">
+  <picture>
+    <source srcset="{{ '/assets/photo-296.webp' | relative_url }}" type="image/webp">
+    <img src="{{ '/assets/photo-296.jpg' | relative_url }}" alt="Portrait of Gabriel Kasmi" class="hero-photo" width="148" height="148">
+  </picture>
   <div class="hero-body">
     <h1>Gabriel Kasmi</h1>
     <p class="hero-tagline">Machine Learning Research Scientist <span class="hero-affiliation">@<a href="https://www.numind.ai/" target="_blank" rel="noopener">NuMind</a></span></p>
@@ -33,7 +36,7 @@ permalink: /
       <a href="https://twitter.com/gabriel_kasmi" aria-label="Twitter / X" title="Twitter / X">
         <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23 22h-6.9l-5.4-6.6L4.6 22H1.5l8.1-9.3L1 2h7l4.9 6z"/></svg>
       </a>
-      <a href="{{ '/assets/cv.pdf' | relative_url }}" class="cv-link" aria-label="Download CV (PDF)" title="Download CV (PDF)">
+      <a href="https://drive.google.com/file/d/1hXz9HkVX-zQW6OhBFiVkMNNo8ApE1S7I/view?usp=drive_link" aria-label="CV (PDF)" title="CV (PDF)">
         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M12 11v6"/><path d="M9.5 14.5 12 17l2.5-2.5"/></svg>
       </a>
     </div>
@@ -61,3 +64,17 @@ permalink: /
 <p class="bio-aside">
   Outside of work, you'll usually find me out on a run.
 </p>
+
+<h2 id="recent-writing">Recent writing</h2>
+
+<ul class="recent-posts">
+  {% for post in site.posts limit:3 %}
+  <li>
+    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    {% if post.subtitle %}<span class="recent-posts-sub">{{ post.subtitle }}</span>{% endif %}
+    <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %Y" }}</time>
+  </li>
+  {% endfor %}
+</ul>
+
+<p class="recent-posts-more"><a href="{{ '/blog/' | relative_url }}">All posts</a></p>
