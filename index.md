@@ -65,7 +65,7 @@ permalink: /
   Outside of work, you'll usually find me out on a run.
 </p>
 
-<h2 id="recent-writing">Recent writing</h2>
+<h2 id="latest-posts">Latest blog posts</h2>
 
 <ul class="recent-posts">
   {% for post in site.posts limit:3 %}
