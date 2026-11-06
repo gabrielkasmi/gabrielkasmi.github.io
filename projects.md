@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Projects
-description: Software and open-source projects by Gabriel Kasmi — DeepPVMapper and WAM.
+description: Software and open-source projects by Gabriel Kasmi — DeepPVMapper, WAM, and Random Maps.
 permalink: /projects/
 ---
 
@@ -18,6 +18,12 @@ permalink: /projects/
     <div class="project-tile-body">
       <p class="project-tile-title">WAM</p>
       <p>A method for attributing model predictions via wavelet decompositions, accepted at ICML 2025.</p>
+    </div>
+  </a>
+  <a class="project-tile" id="random-maps" href="https://gabrielkasmi.github.io/random-maps/">
+    <div class="project-tile-body">
+      <p class="project-tile-title">Random Maps</p>
+      <p>Maps built from open data, following whatever catches my curiosity.</p>
     </div>
   </a>
 </div>
