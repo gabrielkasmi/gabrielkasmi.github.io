@@ -21,6 +21,7 @@ permalink: /projects/
     </div>
   </a>
   <a class="project-tile" id="random-maps" href="https://gabrielkasmi.github.io/random-maps/">
+    <img src="https://gabrielkasmi.github.io/random-maps/banner.webp" alt="Random Maps banner">
     <div class="project-tile-body">
       <p class="project-tile-title">Random Maps</p>
       <p>Maps built from open data, following whatever catches my curiosity.</p>
