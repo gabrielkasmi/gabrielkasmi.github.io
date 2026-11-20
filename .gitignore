@@ -1,6 +1,5 @@
 .DS_Store
-blog/ideas
-blog/blog-ideas/
+_drafts/
 
 # Jekyll build artifacts
 _site/
